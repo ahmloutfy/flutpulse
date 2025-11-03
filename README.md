@@ -41,9 +41,9 @@ Welcome to **FlutPulse**, a growing collection of templates and UI kits crafted 
 ## 💬 Community & Links
 
 * 🛍️ **Gumroad:** [flutpulse.gumroad.com](https://flutpulse.gumroad.com)
-* 📱 **Google Play:** *FlutPulse Apps* (add when ready)
+<!-- * 📱 **Google Play:** *FlutPulse Apps* (add when ready)
 * 🐦 **Twitter/X:** [@flutpulse](https://twitter.com/flutpulse)
-* 📸 **Instagram:** [@flutpulse](https://instagram.com/flutpulse)
+* 📸 **Instagram:** [@flutpulse](https://instagram.com/flutpulse) -->
 * 💬 **Facebook:** [facebook.com/FlutPulse](https://facebook.com/FlutPulse)
 
 ---
