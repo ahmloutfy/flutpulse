@@ -1,5 +1,9 @@
 # 🌀 FlutPulse
 
+<p align="center">
+<img src="https://github.com/ahmloutfy/flutpulse/blob/main/Logo.png" alt="FlutPulse Logo" width="300"/>
+</p>
+
 ⚡ **Flutter templates & UI kits — built for speed and simplicity**
 
 Welcome to **FlutPulse**, a growing collection of templates and UI kits crafted for Flutter developers who value clean code, smooth UI, and fast delivery.
