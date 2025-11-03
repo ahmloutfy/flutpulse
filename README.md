@@ -59,15 +59,7 @@ Before contributing, please read our [**Contribution Guide**](https://github.com
 
 ## 📜 License
 
-This repository and its contents are protected under a **Custom License for Commercial Use**.
-
-You may:
-
-* ✅ Use FlutPulse templates in personal and commercial projects.
-* 🚫 Not redistribute or resell source code as standalone products.
-* ⚖️ Attribution to **FlutPulse** is appreciated but not mandatory.
-
-Full license details: *coming soon on the official FlutPulse website.*
+This project is distributed under a **Commercial License** — see the [**License**](https://github.com/ahmloutfy/flutpulse/blob/main/LICENSE.md) file for details.
 
 ---
 
