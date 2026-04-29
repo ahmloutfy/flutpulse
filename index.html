@@ -5,12 +5,6 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>FlutPulse</title>
 
-<!-- Adsense (enable after approval) -->
-<!--
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-XXXX"
-crossorigin="anonymous"></script>
--->
-
 <style>
 body {
   margin: 0;
@@ -23,23 +17,14 @@ body {
 nav {
   display: flex;
   justify-content: space-between;
+  align-items: center;
   padding: 15px 30px;
   background: #0b0f14;
   border-bottom: 1px solid #222;
 }
 
 nav img {
-  height: 40px;
-}
-
-nav a {
-  color: #aaa;
-  margin-left: 20px;
-  text-decoration: none;
-}
-
-nav a:hover {
-  color: #fff;
+  height: 45px;
 }
 
 /* Hero */
@@ -48,8 +33,27 @@ nav a:hover {
   justify-content: space-between;
   align-items: center;
   padding: 60px 30px;
+  gap: 40px;
+  flex-wrap: wrap;
 }
 
+.hero-text {
+  flex: 1;
+  min-width: 300px;
+}
+
+.hero-logo {
+  flex: 1;
+  text-align: center;
+}
+
+.hero-logo img {
+  width: 320px;
+  max-width: 100%;
+  filter: drop-shadow(0 0 20px #6cff6c);
+}
+
+/* Typography */
 .hero h1 {
   font-size: 42px;
 }
@@ -62,6 +66,7 @@ nav a:hover {
   color: #aaa;
 }
 
+/* Buttons */
 .btn {
   padding: 10px 20px;
   margin-top: 10px;
@@ -101,10 +106,6 @@ nav a:hover {
 
 .card:hover {
   transform: translateY(-5px);
-}
-
-.card h3 {
-  margin-top: 0;
 }
 
 .card p {
@@ -152,20 +153,20 @@ footer a {
 
 <!-- Hero -->
 <section class="hero">
-  <div>
+  
+  <div class="hero-text">
     <h1>Solve. Learn. <span>Build.</span></h1>
     <p>Fix Flutter issues with clear, practical solutions.</p>
     <a href="#" class="btn btn-primary">Browse Articles</a>
     <a href="#" class="btn btn-secondary">Explore Categories</a>
   </div>
 
-  <img src="logo.png" style="width:200px;" alt="FlutPulse">
-</section>
+  <div class="hero-logo">
+    <!-- استخدم نفس اسم اللوجو -->
+    <img src="flutpulse_logo.png" alt="FlutPulse">
+  </div>
 
-<!-- Ad Section -->
-<div style="text-align:center; margin:20px;">
-  <!-- Adsense Ad Slot -->
-</div>
+</section>
 
 <!-- Articles -->
 <div class="container">
@@ -187,7 +188,7 @@ footer a {
 
     <div class="card">
       <h3>Gradle Build Error Fix</h3>
-      <p>Fix Android build and Gradle-related issues بسهولة (oops 😄 fixed below).</p>
+      <p>Fix Android build and Gradle-related issues.</p>
       <a href="#" class="btn btn-primary">Read More</a>
     </div>
 
