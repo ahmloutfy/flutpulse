@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Why API Calls Freeze Flutter UI</title>
+
+<style>
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: #0b0f14;
+  color: #eee;
+}
+
+/* Navbar */
+nav {
+  display: flex;
+  justify-content: space-between;
+  padding: 15px 30px;
+  border-bottom: 1px solid #222;
+}
+
+nav img {
+  height: 45px;
+}
+
+nav a {
+  color: #ccc;
+  margin-left: 20px;
+  text-decoration: none;
+}
+
+/* Container */
+.container {
+  max-width: 900px;
+  margin: 40px auto;
+  background: #121821;
+  padding: 40px;
+  border-radius: 12px;
+}
+
+/* Typography */
+h1 {
+  font-size: 32px;
+  background: linear-gradient(90deg, #6cff6c, #ffd84d);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+h2 {
+  color: #6cff6c;
+  margin-top: 30px;
+}
+
+p {
+  line-height: 1.7;
+  color: #ccc;
+}
+
+/* Code */
+pre {
+  background: #0f141c;
+  padding: 15px;
+  border-radius: 8px;
+  overflow-x: auto;
+}
+
+code {
+  color: #ffd84d;
+}
+
+/* Footer */
+footer {
+  text-align: center;
+  margin-top: 40px;
+  color: #888;
+}
+
+footer a {
+  color: #6cff6c;
+  text-decoration: none;
+}
+</style>
+
+</head>
+
+<body>
+
+<nav>
+  <img src="flutpulse_logo.png">
+  <div>
+    <a href="index.html">Home</a>
+  </div>
+</nav>
+
+<div class="container">
+
+<h1>Why your API calls freeze your Flutter UI 🚫</h1>
+
+<h2>Introduction</h2>
+<p>
+One of the most frustrating issues in Flutter is when your app suddenly feels stuck…
+Buttons stop responding, scrolling becomes laggy, and the whole UI freezes.
+In most cases, the problem isn’t Flutter itself — it’s how API calls are handled.
+</p>
+
+<h2>The Problem ⚠️</h2>
+<pre><code>void fetchData() {
+  var data = api.getData();
+  setState(() {
+    result = data;
+  });
+}</code></pre>
+
+<p>This blocks the UI thread.</p>
+
+<h2>Why this happens 🔍</h2>
+<ul>
+<li>Flutter runs UI on a single thread</li>
+<li>Heavy work blocks rendering</li>
+<li>UI freezes until execution ends</li>
+</ul>
+
+<h2>The Solution ✅</h2>
+<pre><code>Future&lt;void&gt; fetchData() async {
+  final data = await api.getData();
+
+  setState(() {
+    result = data;
+  });
+}</code></pre>
+
+<h2>Better UX ⚡</h2>
+<pre><code>bool isLoading = false;
+
+Future&lt;void&gt; fetchData() async {
+  setState(() => isLoading = true);
+
+  final data = await api.getData();
+
+  setState(() {
+    result = data;
+    isLoading = false;
+  });
+}</code></pre>
+
+<h2>Pro Tip 🚀</h2>
+<pre><code>compute()</code></pre>
+
+<p>Use isolates to keep UI smooth.</p>
+
+<h2>Key Takeaway 🎯</h2>
+<p>If your app freezes, you're blocking the UI thread.</p>
+
+<footer>
+  <p>© 2026 FlutPulse</p>
+  <p>
+    <a href="https://www.facebook.com/flutpulse">Facebook</a> |
+    <a href="mailto:flutpulse@proton.me">Contact</a>
+  </p>
+</footer>
+
+</div>
+
+</body>
+</html>
