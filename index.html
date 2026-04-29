@@ -26,7 +26,6 @@ nav img {
   height: 60px;
 }
 
-/* Links */
 nav a {
   color: #ccc;
   margin-left: 20px;
@@ -40,7 +39,6 @@ nav a:hover {
   color: #6cff6c;
 }
 
-/* underline animation */
 nav a::after {
   content: "";
   position: absolute;
@@ -83,7 +81,6 @@ nav a:hover::after {
   filter: drop-shadow(0 0 20px #6cff6c);
 }
 
-/* Gradient title */
 .hero h1 {
   font-size: 42px;
 }
@@ -117,34 +114,57 @@ nav a:hover::after {
   color: #6cff6c;
 }
 
-/* Sections */
+/* Container */
 .container {
   padding: 30px;
 }
 
-/* Cards */
+/* Grid */
 .grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
   gap: 20px;
 }
 
+/* Card */
 .card {
   background: #121821;
-  padding: 20px;
-  border-radius: 10px;
+  border-radius: 12px;
+  overflow: hidden;
   transition: 0.3s;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+  display: flex;
+  flex-direction: column;
 }
 
 .card:hover {
-  transform: translateY(-5px);
+  transform: translateY(-6px);
+}
+
+/* Card Image FIX */
+.card-img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+  display: block;
+}
+
+/* Card content spacing */
+.card h3 {
+  margin: 15px;
 }
 
 .card p {
+  margin: 0 15px 15px;
   color: #aaa;
 }
 
-/* Categories */
+.card .btn {
+  margin: 0 15px 15px;
+  width: fit-content;
+}
+
+/* Category */
 .category {
   text-align: center;
   padding: 20px;
@@ -171,7 +191,6 @@ footer a {
 
 <body>
 
-<!-- Navbar -->
 <nav>
   <img src="flutpulse_logo.png" alt="FlutPulse Logo">
   <div>
@@ -183,9 +202,7 @@ footer a {
   </div>
 </nav>
 
-<!-- Hero -->
 <section class="hero">
-  
   <div class="hero-text">
     <h1>Solve. Learn. <span>Build.</span></h1>
     <p>Fix Flutter issues with clear, practical solutions.</p>
@@ -196,21 +213,19 @@ footer a {
   <div class="hero-logo">
     <img src="flutpulse_logo.png" alt="FlutPulse">
   </div>
-
 </section>
 
-<!-- Articles -->
 <div class="container">
   <h2>Latest Articles</h2>
 
   <div class="grid">
 
-<div class="card">
-    <img src="images/articles/why-api-freeze.jpg" class="card-img" alt="API Freeze">
-  <h3>Why API Calls Freeze Flutter UI</h3>
-  <p>Learn why your app freezes and how to fix it properly.</p>
-  <a href="/articles/why-api-freeze.html" class="btn btn-primary">Read More</a>
-</div>
+    <div class="card">
+      <img src="images/articles/why-api-freeze.jpg" class="card-img" alt="API Freeze">
+      <h3>Why API Calls Freeze Flutter UI</h3>
+      <p>Learn why your app freezes and how to fix it properly.</p>
+      <a href="/articles/why-api-freeze.html" class="btn btn-primary">Read More</a>
+    </div>
 
     <div class="card">
       <h3>Dart Null Safety Fix</h3>
@@ -227,7 +242,6 @@ footer a {
   </div>
 </div>
 
-<!-- Categories -->
 <div class="container">
   <h2>Categories</h2>
 
@@ -239,7 +253,6 @@ footer a {
   </div>
 </div>
 
-<!-- About -->
 <div class="container">
   <h2>About FlutPulse</h2>
   <p>
@@ -248,7 +261,6 @@ footer a {
   </p>
 </div>
 
-<!-- Footer -->
 <footer>
   <p>© 2026 FlutPulse. All rights reserved.</p>
   <p>
