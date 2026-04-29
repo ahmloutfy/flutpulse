@@ -6,6 +6,7 @@
 <title>Why API Calls Freeze Flutter UI</title>
 
 <style>
+/* Global Styles */
 body {
   margin: 0;
   font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
@@ -13,18 +14,22 @@ body {
   color: #eee;
 }
 
-/* Navbar styles */
+/* Navbar styles - Sticky and proportional */
 nav {
   display: flex;
   justify-content: space-between;
   align-items: center; 
-  padding: 15px 5%;
+  padding: 5px 5%;
   border-bottom: 1px solid #222;
   background: #0b0f14;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
 }
 
+/* Fixed Logo Size to prevent Navbar stretching */
 nav img {
-  height: 250px; /* Increased logo size for better visibility */
+  height: 80px; /* Optimal large size without breaking the layout */
   width: auto;
   transition: transform 0.3s ease;
 }
@@ -38,12 +43,17 @@ nav a {
   margin-left: 20px;
   text-decoration: none;
   font-weight: 600;
-  font-size: 18px;
+  font-size: 16px;
+  transition: color 0.3s;
+}
+
+nav a:hover {
+  color: #6cff6c;
 }
 
 /* Content Container */
 .container {
-  max-width: 800px; /* Standard blog width for readability */
+  max-width: 800px;
   margin: 40px auto;
   background: #121821;
   padding: 40px;
@@ -54,7 +64,7 @@ nav a {
 /* Typography */
 h1 {
   font-size: 34px;
-  margin-top: 25px;
+  margin-top: 10px;
   line-height: 1.3;
   background: linear-gradient(90deg, #6cff6c, #ffd84d);
   -webkit-background-clip: text;
@@ -74,15 +84,13 @@ p, li {
   font-size: 18px;
 }
 
-/* Optimized Image - Fixed the "Too Big" issue */
+/* Article Image Style */
 .article-image {
-  width: 100%; /* Spans the width of the container ONLY */
-  max-width: 100%; 
-  height: auto; /* Maintains aspect ratio to prevent stretching */
+  width: 100%;
+  height: auto;
   border-radius: 12px;
-  margin: 0 auto 30px; /* Centers the image */
+  margin-bottom: 30px;
   display: block;
-  box-shadow: 0 4px 15px rgba(0,0,0,0.3);
 }
 
 /* Code Snippet Styles */
@@ -96,7 +104,7 @@ pre {
 
 code {
   color: #ffd84d;
-  font-family: 'Consolas', 'Monaco', 'Courier New', monospace;
+  font-family: 'Consolas', 'Monaco', monospace;
 }
 
 /* Footer Section */
@@ -119,7 +127,7 @@ footer a {
 <body>
 
 <nav>
-  <img src="flutpulse_logo.png" alt="FlutPulse Logo">
+  <img src="/flutpulse/flutpulse_logo.png" alt="FlutPulse Logo">
   <div>
     <a href="#">Home</a>
     <a href="#">Articles</a>
@@ -142,53 +150,23 @@ footer a {
   </p>
 
   <h2>The Problem ⚠️</h2>
-  <pre><code>// This synchronous call blocks the main thread
+  <pre><code>// Synchronous calls block the Main Thread
 void fetchData() {
-  var data = api.getData(); // UI stops here until data returns
+  var data = api.getData(); // Blocks UI
   setState(() {
     result = data;
   });
 }</code></pre>
-
-  <p>This approach blocks the main UI thread, making the app unresponsive.</p>
-
-  <h2>Why this happens 🔍</h2>
-  <ul>
-    <li>Flutter runs UI on a single main thread.</li>
-    <li>Heavy/Synchronous work blocks the rendering cycle.</li>
-    <li>The UI freezes until the execution finishes.</li>
-  </ul>
 
   <h2>The Solution ✅</h2>
-  <pre><code>// Using async/await to keep the UI responsive
+  <pre><code>// Async/Await keeps the UI smooth
 Future&lt;void&gt; fetchData() async {
-  final data = await api.getData(); // Runs in background
-
-  setState(() {
-    result = data;
-  });
-}</code></pre>
-
-  <h2>Better UX ⚡</h2>
-  <pre><code>bool isLoading = false;
-
-Future&lt;void&gt; fetchData() async {
-  setState(() => isLoading = true);
-
   final data = await api.getData();
 
   setState(() {
     result = data;
-    isLoading = false;
   });
 }</code></pre>
-
-  <h2>Pro Tip 🚀</h2>
-  <pre><code>compute() // Use for heavy data parsing</code></pre>
-  <p>Use isolates to keep UI smooth during heavy computations.</p>
-
-  <h2>Key Takeaway 🎯</h2>
-  <p>If your app freezes, you're likely blocking the UI thread. Always use asynchronous patterns.</p>
 
   <footer>
     <p>© 2026 FlutPulse</p>
