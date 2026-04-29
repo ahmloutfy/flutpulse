@@ -19,12 +19,41 @@ nav {
   justify-content: space-between;
   align-items: center;
   padding: 15px 30px;
-  background: #0b0f14;
   border-bottom: 1px solid #222;
 }
 
 nav img {
   height: 45px;
+}
+
+/* Links */
+nav a {
+  color: #ccc;
+  margin-left: 20px;
+  text-decoration: none;
+  font-weight: 500;
+  position: relative;
+  transition: 0.3s;
+}
+
+nav a:hover {
+  color: #6cff6c;
+}
+
+/* underline animation */
+nav a::after {
+  content: "";
+  position: absolute;
+  width: 0;
+  height: 2px;
+  bottom: -4px;
+  left: 0;
+  background: linear-gradient(90deg, #6cff6c, #ffd84d);
+  transition: 0.3s;
+}
+
+nav a:hover::after {
+  width: 100%;
 }
 
 /* Hero */
@@ -53,13 +82,15 @@ nav img {
   filter: drop-shadow(0 0 20px #6cff6c);
 }
 
-/* Typography */
+/* Gradient title */
 .hero h1 {
   font-size: 42px;
 }
 
 .hero span {
-  color: #6cff6c;
+  background: linear-gradient(90deg, #6cff6c, #ffd84d);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 
 .hero p {
@@ -76,7 +107,7 @@ nav img {
 }
 
 .btn-primary {
-  background: #6cff6c;
+  background: linear-gradient(90deg, #6cff6c, #ffd84d);
   color: #000;
 }
 
@@ -162,7 +193,6 @@ footer a {
   </div>
 
   <div class="hero-logo">
-    <!-- استخدم نفس اسم اللوجو -->
     <img src="flutpulse_logo.png" alt="FlutPulse">
   </div>
 
