@@ -8,7 +8,7 @@
 <style>
 body {
   margin: 0;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
   background: #0b0f14;
   color: #eee;
 }
@@ -18,13 +18,13 @@ nav {
   display: flex;
   justify-content: space-between;
   align-items: center; 
-  padding: 20px 5%;
+  padding: 15px 5%;
   border-bottom: 1px solid #222;
   background: #0b0f14;
 }
 
 nav img {
-  height: 60px; /* Enhanced logo visibility */
+  height: 80px; /* Increased logo size for better visibility */
   width: auto;
   transition: transform 0.3s ease;
 }
@@ -38,22 +38,24 @@ nav a {
   margin-left: 20px;
   text-decoration: none;
   font-weight: 600;
+  font-size: 18px;
 }
 
 /* Content Container */
 .container {
-  max-width: 850px;
+  max-width: 800px; /* Standard blog width for readability */
   margin: 40px auto;
   background: #121821;
   padding: 40px;
   border-radius: 16px;
-  box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+  box-shadow: 0 10px 40px rgba(0,0,0,0.6);
 }
 
-/* Typography and Heading Gradients */
+/* Typography */
 h1 {
-  font-size: 36px;
-  margin-top: 20px;
+  font-size: 34px;
+  margin-top: 25px;
+  line-height: 1.3;
   background: linear-gradient(90deg, #6cff6c, #ffd84d);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -72,15 +74,15 @@ p, li {
   font-size: 18px;
 }
 
-/* Optimized Article Image */
+/* Optimized Image - Fixed the "Too Big" issue */
 .article-image {
-  width: 100%; 
-  height: auto; 
-  max-height: 500px; 
-  object-fit: contain; 
+  width: 100%; /* Spans the width of the container ONLY */
+  max-width: 100%; 
+  height: auto; /* Maintains aspect ratio to prevent stretching */
   border-radius: 12px;
-  margin-bottom: 30px;
+  margin: 0 auto 30px; /* Centers the image */
   display: block;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.3);
 }
 
 /* Code Snippet Styles */
@@ -94,14 +96,14 @@ pre {
 
 code {
   color: #ffd84d;
-  font-family: 'Consolas', 'Monaco', monospace;
+  font-family: 'Consolas', 'Monaco', 'Courier New', monospace;
 }
 
 /* Footer Section */
 footer {
   text-align: center;
   margin-top: 60px;
-  padding-top: 20px;
+  padding: 30px 0;
   border-top: 1px solid #222;
   color: #888;
 }
