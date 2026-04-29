@@ -8,41 +8,52 @@
 <style>
 body {
   margin: 0;
-  font-family: Arial, sans-serif;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   background: #0b0f14;
   color: #eee;
 }
 
-/* Navbar */
+/* Navbar styles */
 nav {
   display: flex;
   justify-content: space-between;
-  padding: 15px 30px;
+  align-items: center; 
+  padding: 20px 5%;
   border-bottom: 1px solid #222;
+  background: #0b0f14;
 }
 
 nav img {
-  height: 45px;
+  height: 60px; /* Enhanced logo visibility */
+  width: auto;
+  transition: transform 0.3s ease;
+}
+
+nav img:hover {
+  transform: scale(1.05);
 }
 
 nav a {
   color: #ccc;
   margin-left: 20px;
   text-decoration: none;
+  font-weight: 600;
 }
 
-/* Container */
+/* Content Container */
 .container {
-  max-width: 900px;
+  max-width: 850px;
   margin: 40px auto;
   background: #121821;
   padding: 40px;
-  border-radius: 12px;
+  border-radius: 16px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.5);
 }
 
-/* Typography */
+/* Typography and Heading Gradients */
 h1 {
-  font-size: 32px;
+  font-size: 36px;
+  margin-top: 20px;
   background: linear-gradient(90deg, #6cff6c, #ffd84d);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -50,100 +61,110 @@ h1 {
 
 h2 {
   color: #6cff6c;
-  margin-top: 30px;
+  margin-top: 40px;
+  border-left: 4px solid #6cff6c;
+  padding-left: 15px;
 }
 
-p {
-  line-height: 1.7;
-  color: #ccc;
+p, li {
+  line-height: 1.8;
+  color: #bdc3c7;
+  font-size: 18px;
 }
 
-/* Code */
+/* Optimized Article Image */
+.article-image {
+  width: 100%; 
+  height: auto; 
+  max-height: 500px; 
+  object-fit: contain; 
+  border-radius: 12px;
+  margin-bottom: 30px;
+  display: block;
+}
+
+/* Code Snippet Styles */
 pre {
-  background: #0f141c;
-  padding: 15px;
-  border-radius: 8px;
+  background: #080c11;
+  padding: 20px;
+  border-radius: 10px;
   overflow-x: auto;
+  border: 1px solid #1e2733;
 }
 
 code {
   color: #ffd84d;
+  font-family: 'Consolas', 'Monaco', monospace;
 }
 
-/* Footer */
+/* Footer Section */
 footer {
   text-align: center;
-  margin-top: 40px;
+  margin-top: 60px;
+  padding-top: 20px;
+  border-top: 1px solid #222;
   color: #888;
 }
 
 footer a {
   color: #6cff6c;
   text-decoration: none;
+  margin: 0 10px;
 }
-
-.article-image {
-  width: 1000%;
-  max-width: 1500px;
-  height: 700px;
-  object-fit: cover;
-  border-radius: 12px;
-  margin: 0 auto 25px;
-  display: block;
-}
-  
 </style>
 
 </head>
-
 <body>
 
 <nav>
-  <img src="/flutpulse/flutpulse_logo.png">
+  <img src="/flutpulse/flutpulse_logo.png" alt="FlutPulse Logo">
   <div>
     <a href="index.html">Home</a>
   </div>
 </nav>
 
 <div class="container">
-  <img class="article-image" src="/flutpulse/images/articles/why-api-freeze.jpg">
+  <img class="article-image" src="/flutpulse/images/articles/why-api-freeze.jpg" alt="API Freezing UI Explanation">
+  
   <h1>Why your API calls freeze your Flutter UI 🚫</h1>
 
-<h2>Introduction</h2>
-<p>
-One of the most frustrating issues in Flutter is when your app suddenly feels stuck…
-Buttons stop responding, scrolling becomes laggy, and the whole UI freezes.
-In most cases, the problem isn’t Flutter itself — it’s how API calls are handled.
-</p>
+  <h2>Introduction</h2>
+  <p>
+    One of the most frustrating issues in Flutter is when your app suddenly feels stuck… 
+    Buttons stop responding, scrolling becomes laggy, and the whole UI freezes. 
+    In most cases, the problem isn’t Flutter itself — it’s how API calls are handled.
+  </p>
 
-<h2>The Problem ⚠️</h2>
-<pre><code>void fetchData() {
-  var data = api.getData();
+  <h2>The Problem ⚠️</h2>
+  <pre><code>// This synchronous call blocks the main thread
+void fetchData() {
+  var data = api.getData(); // UI stops here until data returns
   setState(() {
     result = data;
   });
 }</code></pre>
 
-<p>This blocks the UI thread.</p>
+  <p>This approach blocks the main UI thread, making the app unresponsive.</p>
 
-<h2>Why this happens 🔍</h2>
-<ul>
-<li>Flutter runs UI on a single thread</li>
-<li>Heavy work blocks rendering</li>
-<li>UI freezes until execution ends</li>
-</ul>
+  <h2>Why this happens 🔍</h2>
+  <ul>
+    <li>Flutter runs UI on a single main thread.</li>
+    <li>Heavy/Synchronous work blocks the rendering cycle.</li>
+    <li>The UI freezes until the execution finishes.</li>
+  </ul>
 
-<h2>The Solution ✅</h2>
-<pre><code>Future&lt;void&gt; fetchData() async {
-  final data = await api.getData();
+  <h2>The Solution ✅</h2>
+  <pre><code>// Using async/await to keep the UI responsive
+Future&lt;void&gt; fetchData() async {
+  final data = await api.getData(); // Runs in background
 
   setState(() {
     result = data;
   });
 }</code></pre>
 
-<h2>Better UX ⚡</h2>
-<pre><code>bool isLoading = false;
+  <h2>Better UX ⚡</h2>
+  <pre><code>bool isLoading = false;
 
 Future&lt;void&gt; fetchData() async {
   setState(() => isLoading = true);
@@ -156,22 +177,20 @@ Future&lt;void&gt; fetchData() async {
   });
 }</code></pre>
 
-<h2>Pro Tip 🚀</h2>
-<pre><code>compute()</code></pre>
+  <h2>Pro Tip 🚀</h2>
+  <pre><code>compute() // Use for heavy data parsing</code></pre>
+  <p>Use isolates to keep UI smooth during heavy computations.</p>
 
-<p>Use isolates to keep UI smooth.</p>
+  <h2>Key Takeaway 🎯</h2>
+  <p>If your app freezes, you're likely blocking the UI thread. Always use asynchronous patterns.</p>
 
-<h2>Key Takeaway 🎯</h2>
-<p>If your app freezes, you're blocking the UI thread.</p>
-
-<footer>
-  <p>© 2026 FlutPulse</p>
-  <p>
-    <a href="https://www.facebook.com/flutpulse">Facebook</a> |
-    <a href="mailto:flutpulse@proton.me">Contact</a>
-  </p>
-</footer>
-
+  <footer>
+    <p>© 2026 FlutPulse</p>
+    <p>
+      <a href="https://www.facebook.com/flutpulse">Facebook</a> | 
+      <a href="mailto:flutpulse@proton.me">Contact</a>
+    </p>
+  </footer>
 </div>
 
 </body>
