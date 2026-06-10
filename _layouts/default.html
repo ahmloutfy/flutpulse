@@ -114,9 +114,11 @@
     }
 
     /* Container */
-    .container {
-      padding: 30px;
-    }
+ .container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 30px;
+}
 
     /* Grid */
     .grid {
@@ -226,21 +228,25 @@
   </div>
 </nav>
 
-{{ content }}
-
 {% if page.layout == "default" and page.title != "Home" %}
-<div class="container" style="text-align: center; margin: 40px auto; max-width: 800px;">
-  <span style="color: #444; font-size: 12px; display: block; margin-bottom: 5px;">Advertisement</span>
-  <ins class="adsbygoogle"
-       style="display:block; text-align:center;"
-       data-ad-layout="in-article"
-       data-ad-format="fluid"
-       data-ad-client="ca-pub-XXXXXXXXXXXXXXXX"
-       data-ad-slot="ZZZZZZZZZZ"></ins>
-  <script>
-       (adsbygoogle = window.adsbygoogle || []).push({});
-  </script>
-</div>
+  <div class="article-container">
+    
+    {% if page.image %}
+      <div class="article-image-wrapper">
+        <img class="main-article-image" src="{{ page.image | relative_url }}" alt="{{ page.title }}">
+      </div>
+    {% endif %}
+
+    <h1 class="article-main-title">{{ page.title }}</h1>
+    <p class="article-date">Published on: {{ page.date | date: "%B %d, %Y" }}</p>
+
+    <div class="article-body">
+      {{ content }}
+    </div>
+
+  </div>
+{% else %}
+  {{ content }}
 {% endif %}
 
 <footer>
