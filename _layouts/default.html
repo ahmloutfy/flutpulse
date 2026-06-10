@@ -143,17 +143,28 @@
       box-shadow: 0 10px 30px rgba(0,0,0,0.5);
     }
 
-/* Target ONLY the main article title - Bound to content width to prevent emoji splitting */
-.article-main-content > h1:first-of-type {
-  font-size: 38px;
-  color: #fff;
-  margin: 20px auto 25px auto; /* Centering the block itself using margins */
-  
-  display: block;
-  width: fit-content;       /* Shrinks the container width to fit the exact text + emoji length */
-  max-width: 100%;          /* Ensures responsiveness on small mobile screens */
-  text-align: center;
-}
+    /* Target ONLY the main article title - Bulletproof text+emoji tracking */
+    .article-main-content > h1:first-of-type {
+      font-size: 38px;
+      color: #fff;
+      margin: 20px auto 25px auto;
+      
+      /* The ultimate weapon to prevent emoji wrapping */
+      display: inline-flex !important;
+      align-items: center;
+      justify-content: center;
+      white-space: nowrap !important; /* Zero line breaks allowed for the entire heading block */
+      gap: 12px;
+      width: auto;
+    }
+
+    /* Responsive adjustments for mobile so the unbroken header scales down smoothly */
+    @media (max-width: 600px) {
+      .article-main-content > h1:first-of-type {
+        font-size: 26px;
+        white-space: normal !important; /* Allow normal wrap on very small screens to avoid overflow */
+      }
+    }
 
     .article-main-content {
       font-size: 18px;
