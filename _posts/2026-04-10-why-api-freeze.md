@@ -6,7 +6,7 @@ excerpt: "One of the most frustrating issues in Flutter is when your app suddenl
 image: "/images/articles/why-api-freeze.jpg"
 ---
 
-<img class="article-image" src="{{ page.image }}" alt="API Freezing UI Explanation">
+<img class="article-image" src="{{ page.image | relative_url }}" alt="{{ page.title }}">
 
 <h1>{{ page.title }}</h1>
 <p class="article-date">Published on: {{ page.date | date: "%B %d, %Y" }}</p>
