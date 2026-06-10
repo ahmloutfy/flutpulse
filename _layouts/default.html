@@ -227,15 +227,20 @@
 {% endif %}
 
 {% if page.layout == "default" and page.title != "Home" %}
-<div style="text-align: center; margin: 40px auto; max-width: 800px; background: #121821; padding: 15px; border-radius: 8px; border: 1px dashed #444;">
-  <span style="color: #6cff6c; font-size: 12px; display: block; margin-bottom: 10px; font-weight: bold;">[ AdSense Test Preview ]</span>
+<div style="text-align: center; margin: 40px auto; max-width: 800px; background: #121821; padding: 20px; border-radius: 8px; border: 1px dashed #444;">
+  <span style="color: #6cff6c; font-size: 12px; display: block; margin-bottom: 15px; font-weight: bold;">[ AdSense Test Preview ]</span>
   
   <ins class="adsbygoogle"
-       style="display:block; text-align:center;"
+       style="display:block; text-align:center; min-height: 250px; background: rgba(255,255,255,0.03); display: flex; align-items: center; justify-content: center; border-radius: 4px;"
        data-ad-layout="in-article"
        data-ad-format="fluid"
-       data-ad-client="ca-pub-1234567890123456" data-ad-slot="1234567890"></ins>        <script>
-       // Activate Test Mode globally for local testing
+       data-ad-client="ca-pub-1234567890123456"
+       data-ad-slot="1234567890">
+       
+       <span style="color: #555; font-family: monospace; font-size: 14px;">Responsive Banner Ad (Placeholder)</span>
+  </ins>
+  
+  <script>
        (window.adsbygoogle = window.adsbygoogle || []).push({
             params: {
                 google_ad_test: "on"
