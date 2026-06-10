@@ -4,7 +4,7 @@ layout: default
 title: "Why your API calls freeze your Flutter UI 🚫"
 date: 2026-06-10
 excerpt: "One of the most frustrating issues in Flutter is when your app suddenly feels stuck... Learn why your app freezes and how to fix it properly."
-image: "/flutpulse/images/articles/why-api-freeze.jpg"
+image: "/images/articles/why-api-freeze.jpg"
 ---
 
 <img class="article-image" src="{{ page.image }}" alt="API Freezing UI Explanation">
