@@ -84,6 +84,40 @@
     .btn-primary { background: linear-gradient(90deg, #6cff6c, #ffd84d); color: #000; }
     .btn-secondary { border: 1px solid #6cff6c; color: #6cff6c; }
 
+    /* 🔽 الـ CSS المفقود اللي هيخلي الكلمات ترجع أزرار فوراً 🔽 */
+    .categories-section {
+      text-align: center;
+      padding: 40px 20px;
+    }
+    .categories-section h2 {
+      font-size: 28px;
+      margin-bottom: 20px;
+    }
+    .categories-container {
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+      flex-wrap: wrap;
+      margin-top: 15px;
+    }
+    .category-btn {
+      background: #121821;
+      color: #fff;
+      padding: 12px 24px;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: bold;
+      border: 1px solid #222;
+      transition: 0.3s ease;
+    }
+    .category-btn:hover {
+      border-color: #6cff6c;
+      color: #6cff6c;
+      transform: translateY(-3px);
+      box-shadow: 0 5px 15px rgba(108, 255, 108, 0.2);
+    }
+    /* 🔼 الـ CSS المفقود اللي هيخلي الكلمات ترجع أزرار فوراً 🔼 */
+
     /* ==================================================== */
     /* 2. Central Article Page Styles (Centered Layout)     */
     /* ==================================================== */
@@ -110,7 +144,7 @@
       box-shadow: 0 10px 30px rgba(0,0,0,0.5);
     }
 
-    /* Strict selector: Target ONLY the first h1 inside the article content to avoid leaking to categories */
+    /* Target ONLY the main article title */
     .article-main-content > h1:first-of-type {
       font-size: 38px;
       text-align: center !important;
