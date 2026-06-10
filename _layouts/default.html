@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>{{ page.title }} | FlutPulse</title>
   <style>
+    /* Global Styles */
     body {
       margin: 0;
       font-family: Arial, sans-serif;
@@ -12,7 +13,7 @@
       color: #fff;
     }
 
-    /* Navbar */
+    /* Shared Navbar */
     nav {
       display: flex;
       justify-content: space-between;
@@ -20,11 +21,7 @@
       padding: 15px 30px;
       border-bottom: 1px solid #222;
     }
-
-    nav img {
-      height: 60px;
-    }
-
+    nav img { height: 60px; }
     nav a {
       color: #ccc;
       margin-left: 20px;
@@ -33,11 +30,7 @@
       position: relative;
       transition: 0.3s;
     }
-
-    nav a:hover {
-      color: #6cff6c;
-    }
-
+    nav a:hover { color: #6cff6c; }
     nav a::after {
       content: "";
       position: absolute;
@@ -48,12 +41,11 @@
       background: linear-gradient(90deg, #6cff6c, #ffd84d);
       transition: 0.3s;
     }
+    nav a:hover::after { width: 100%; }
 
-    nav a:hover::after {
-      width: 100%;
-    }
-
-    /* Hero */
+    /* ==================================================== */
+    /* 1. Home Page Styles (Hero & Grid)                    */
+    /* ==================================================== */
     .hero {
       display: flex;
       justify-content: space-between;
@@ -62,72 +54,19 @@
       gap: 40px;
       flex-wrap: wrap;
     }
+    .hero-text { flex: 1; min-width: 300px; margin-left: 80px; }
+    .hero-logo { flex: 1; text-align: center; }
+    .hero-logo img { width: 320px; max-width: 100%; filter: drop-shadow(0 0 20px #6cff6c); }
+    .hero h1 { font-size: 42px; }
+    .hero span { background: linear-gradient(90deg, #6cff6c, #ffd84d); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+    .hero p { color: #aaa; }
 
-    .hero-text {
-      flex: 1;
-      min-width: 300px;
-      margin-left: 80px;
-    }
-
-    .hero-logo {
-      flex: 1;
-      text-align: center;
-    }
-
-    .hero-logo img {
-      width: 320px;
-      max-width: 100%;
-      filter: drop-shadow(0 0 20px #6cff6c);
-    }
-
-    .hero h1 {
-      font-size: 42px;
-    }
-
-    .hero span {
-      background: linear-gradient(90deg, #6cff6c, #ffd84d);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-    }
-
-    .hero p {
-      color: #aaa;
-    }
-
-    /* Buttons */
-    .btn {
-      padding: 10px 20px;
-      margin-top: 10px;
-      display: inline-block;
-      border-radius: 6px;
-      text-decoration: none;
-    }
-
-    .btn-primary {
-      background: linear-gradient(90deg, #6cff6c, #ffd84d);
-      color: #000;
-    }
-
-    .btn-secondary {
-      border: 1px solid #6cff6c;
-      color: #6cff6c;
-    }
-
-    /* Container */
- .container {
-  max-width: 800px;
-  margin: 0 auto;
-  padding: 30px;
-}
-
-    /* Grid */
+    .container { padding: 30px; }
     .grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
       gap: 20px;
     }
-
-    /* Card */
     .card {
       background: #121821;
       border-radius: 12px;
@@ -136,65 +75,64 @@
       box-shadow: 0 4px 15px rgba(0,0,0,0.2);
       display: flex;
       flex-direction: column;
-      max-width: 360px;
+    }
+    .card:hover { transform: translateY(-6px); }
+    .card-img { width: 100%; height: 180px; object-fit: cover; display: block; }
+    .card h3, .card p, .card .btn { margin: 15px; }
+
+    .btn { padding: 10px 20px; margin-top: 10px; display: inline-block; border-radius: 6px; text-decoration: none; }
+    .btn-primary { background: linear-gradient(90deg, #6cff6c, #ffd84d); color: #000; }
+    .btn-secondary { border: 1px solid #6cff6c; color: #6cff6c; }
+
+    /* ==================================================== */
+    /* 2. Central Article Page Styles (Centered Layout)     */
+    /* ==================================================== */
+    .article-layout-wrapper {
+      display: block; /* Prevents horizontal alignment side-by-side */
+      max-width: 800px; /* Optimized readable width for technical articles */
+      margin: 50px auto; /* Centers the whole container horizontally */
+      padding: 0 20px;
+      box-sizing: border-box;
     }
 
-    .card:hover {
-      transform: translateY(-6px);
-    }
-
-    /* Card Image FIX */
-    .card-img {
+    .article-image-box {
+      text-align: center; /* Centers the image wrapper */
+      margin-bottom: 40px;
       width: 100%;
-      height: 180px;
-      object-fit: cover;
-      display: block;
     }
 
-    /* Card content spacing */
-    .card h3 {
-      margin: 15px;
-    }
-
-    .card p {
-      margin: 0 15px 15px;
-      color: #aaa;
-    }
-
-    .card .btn {
-      margin: 0 15px 15px;
-      width: fit-content;
-    }
-
-    /* Category */
-    .category {
-      text-align: center;
-      padding: 20px;
-      background: #121821;
-      border-radius: 10px;
-    }
-
-    /* Footer */
-    footer {
-      background: #05080c;
-      padding: 30px;
-      text-align: center;
-      color: #aaa;
-      margin-top: 40px;
-    }
-
-    footer a {
-      color: #6cff6c;
-      text-decoration: none;
-    }
-
-    .article-image {
-      width: 100%;
+    .article-central-img {
+      max-width: 100%;
       height: auto;
+      max-height: 400px; /* Limits large images to fit fully within screen */
+      object-fit: contain;
       border-radius: 12px;
-      margin-bottom: 30px;
-      display: block;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.5);
     }
+
+    .article-title-centered {
+      font-size: 38px;
+      text-align: center; /* Centers the title */
+      margin-top: 20px;
+      margin-bottom: 10px;
+      color: #fff;
+    }
+
+    .article-date-centered {
+      text-align: center; /* Centers the date */
+      color: #888;
+      font-style: italic;
+      margin-bottom: 40px;
+    }
+
+    .article-main-content {
+      font-size: 18px;
+      line-height: 1.8;
+      color: #e0e0e0;
+      text-align: left; /* Left-aligns English technical content naturally */
+    }
+
+    /* Code Block Styles inside Articles */
     pre {
       background: #080c11;
       padding: 20px;
@@ -204,53 +142,12 @@
     }
     code {
       color: #ffd84d;
-      font-family: 'Consolas', 'Monaco', monospace;
+      font-family: 'Consolas', monospace;
     }
-    .article-date {
-      color: #888;
-      font-size: 14px;
-      margin-bottom: 30px;
-      font-style: italic;
-    }
-.article-container {
-  max-width: 800px;
-  margin: 40px auto;
-  padding: 0 20px;
-}
 
-.article-image-wrapper {
-  text-align: center;
-  margin-bottom: 30px;
-}
-
-.main-article-image {
-  max-width: 100%;
-  height: auto;
-  max-height: 450px;
-  border-radius: 12px;
-  display: inline-block;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
-}
-
-.article-main-title {
-  font-size: 36px;
-  text-align: center;
-  margin-top: 20px;
-  margin-bottom: 10px;
-}
-
-.article-date {
-  text-align: center;
-  color: #888;
-  font-style: italic;
-  margin-bottom: 40px;
-}
-
-.article-body {
-  font-size: 18px;
-  line-height: 1.8;
-  color: #e0e0e0;
-}
+    /* Shared Footer */
+    footer { background: #05080c; padding: 30px; text-align: center; color: #aaa; margin-top: 60px; }
+    footer a { color: #6cff6c; text-decoration: none; }
   </style>
 </head>
 <body>
@@ -266,25 +163,44 @@
   </div>
 </nav>
 
-{% if page.layout == "default" and page.title != "Home" %}
-  <div class="article-container">
+{% if page.title == "Home" %}
+  
+  {{ content }}
+
+{% else %}
+  
+  <div class="article-layout-wrapper">
     
     {% if page.image %}
-      <div class="article-image-wrapper">
-        <img class="main-article-image" src="{{ page.image | relative_url }}" alt="{{ page.title }}">
-      </div>
+    <div class="article-image-box">
+      <img class="article-central-img" src="{{ page.image | relative_url }}" alt="{{ page.title }}">
+    </div>
     {% endif %}
 
-    <h1 class="article-main-title">{{ page.title }}</h1>
-    <p class="article-date">Published on: {{ page.date | date: "%B %d, %Y" }}</p>
+    <h1 class="article-title-centered">{{ page.title }}</h1>
+    <p class="article-date-centered">📅 Published on: {{ page.date | date: "%B %d, %Y" }}</p>
 
-    <div class="article-body">
+    <div class="article-main-content">
       {{ content }}
     </div>
 
   </div>
-{% else %}
-  {{ content }}
+
+{% endif %}
+
+{% if page.layout == "default" and page.title != "Home" %}
+<div style="text-align: center; margin: 40px auto; max-width: 800px;">
+  <span style="color: #444; font-size: 12px; display: block; margin-bottom: 5px;">Advertisement</span>
+  <ins class="adsbygoogle"
+       style="display:block; text-align:center;"
+       data-ad-layout="in-article"
+       data-ad-format="fluid"
+       data-ad-client="ca-pub-XXXXXXXXXXXXXXXX"
+       data-ad-slot="ZZZZZZZZZZ"></ins>
+  <script>
+       (adsbygoogle = window.adsbygoogle || []).push({});
+  </script>
+</div>
 {% endif %}
 
 <footer>
