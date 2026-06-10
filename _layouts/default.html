@@ -4,188 +4,213 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>{{ page.title }} | FlutPulse</title>
-<style>
-body {
-  margin: 0;
-  font-family: Arial, sans-serif;
-  background: #0b0f14;
-  color: #fff;
-}
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #0b0f14;
+      color: #fff;
+    }
 
-/* Navbar */
-nav {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 15px 30px;
-  border-bottom: 1px solid #222;
-}
+    /* Navbar */
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 15px 30px;
+      border-bottom: 1px solid #222;
+    }
 
-nav img {
-  height: 60px;
-}
+    nav img {
+      height: 60px;
+    }
 
-nav a {
-  color: #ccc;
-  margin-left: 20px;
-  text-decoration: none;
-  font-weight: 500;
-  position: relative;
-  transition: 0.3s;
-}
+    nav a {
+      color: #ccc;
+      margin-left: 20px;
+      text-decoration: none;
+      font-weight: 500;
+      position: relative;
+      transition: 0.3s;
+    }
 
-nav a:hover {
-  color: #6cff6c;
-}
+    nav a:hover {
+      color: #6cff6c;
+    }
 
-nav a::after {
-  content: "";
-  position: absolute;
-  width: 0;
-  height: 2px;
-  bottom: -4px;
-  left: 0;
-  background: linear-gradient(90deg, #6cff6c, #ffd84d);
-  transition: 0.3s;
-}
+    nav a::after {
+      content: "";
+      position: absolute;
+      width: 0;
+      height: 2px;
+      bottom: -4px;
+      left: 0;
+      background: linear-gradient(90deg, #6cff6c, #ffd84d);
+      transition: 0.3s;
+    }
 
-nav a:hover::after {
-  width: 100%;
-}
+    nav a:hover::after {
+      width: 100%;
+    }
 
-/* Hero */
-.hero {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 60px 30px;
-  gap: 40px;
-  flex-wrap: wrap;
-}
+    /* Hero */
+    .hero {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 60px 30px;
+      gap: 40px;
+      flex-wrap: wrap;
+    }
 
-.hero-text {
-  flex: 1;
-  min-width: 300px;
-  margin-left: 80px;
-}
+    .hero-text {
+      flex: 1;
+      min-width: 300px;
+      margin-left: 80px;
+    }
 
-.hero-logo {
-  flex: 1;
-  text-align: center;
-}
+    .hero-logo {
+      flex: 1;
+      text-align: center;
+    }
 
-.hero-logo img {
-  width: 320px;
-  max-width: 100%;
-  filter: drop-shadow(0 0 20px #6cff6c);
-}
+    .hero-logo img {
+      width: 320px;
+      max-width: 100%;
+      filter: drop-shadow(0 0 20px #6cff6c);
+    }
 
-.hero h1 {
-  font-size: 42px;
-}
+    .hero h1 {
+      font-size: 42px;
+    }
 
-.hero span {
-  background: linear-gradient(90deg, #6cff6c, #ffd84d);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-}
+    .hero span {
+      background: linear-gradient(90deg, #6cff6c, #ffd84d);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
 
-.hero p {
-  color: #aaa;
-}
+    .hero p {
+      color: #aaa;
+    }
 
-/* Buttons */
-.btn {
-  padding: 10px 20px;
-  margin-top: 10px;
-  display: inline-block;
-  border-radius: 6px;
-  text-decoration: none;
-}
+    /* Buttons */
+    .btn {
+      padding: 10px 20px;
+      margin-top: 10px;
+      display: inline-block;
+      border-radius: 6px;
+      text-decoration: none;
+    }
 
-.btn-primary {
-  background: linear-gradient(90deg, #6cff6c, #ffd84d);
-  color: #000;
-}
+    .btn-primary {
+      background: linear-gradient(90deg, #6cff6c, #ffd84d);
+      color: #000;
+    }
 
-.btn-secondary {
-  border: 1px solid #6cff6c;
-  color: #6cff6c;
-}
+    .btn-secondary {
+      border: 1px solid #6cff6c;
+      color: #6cff6c;
+    }
 
-/* Container */
-.container {
-  padding: 30px;
-}
+    /* Container */
+    .container {
+      padding: 30px;
+    }
 
-/* Grid */
-.grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 20px;
-}
+    /* Grid */
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+    }
 
-/* Card */
-.card {
-  background: #121821;
-  border-radius: 12px;
-  overflow: hidden;
-  transition: 0.3s;
-  box-shadow: 0 4px 15px rgba(0,0,0,0.2);
-  display: flex;
-  flex-direction: column;
-}
+    /* Card */
+    .card {
+      background: #121821;
+      border-radius: 12px;
+      overflow: hidden;
+      transition: 0.3s;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+      display: flex;
+      flex-direction: column;
+    }
 
-.card:hover {
-  transform: translateY(-6px);
-}
+    .card:hover {
+      transform: translateY(-6px);
+    }
 
-/* Card Image FIX */
-.card-img {
-  width: 100%;
-  height: 180px;
-  object-fit: cover;
-  display: block;
-}
+    /* Card Image FIX */
+    .card-img {
+      width: 100%;
+      height: 180px;
+      object-fit: cover;
+      display: block;
+    }
 
-/* Card content spacing */
-.card h3 {
-  margin: 15px;
-}
+    /* Card content spacing */
+    .card h3 {
+      margin: 15px;
+    }
 
-.card p {
-  margin: 0 15px 15px;
-  color: #aaa;
-}
+    .card p {
+      margin: 0 15px 15px;
+      color: #aaa;
+    }
 
-.card .btn {
-  margin: 0 15px 15px;
-  width: fit-content;
-}
+    .card .btn {
+      margin: 0 15px 15px;
+      width: fit-content;
+    }
 
-/* Category */
-.category {
-  text-align: center;
-  padding: 20px;
-  background: #121821;
-  border-radius: 10px;
-}
+    /* Category */
+    .category {
+      text-align: center;
+      padding: 20px;
+      background: #121821;
+      border-radius: 10px;
+    }
 
-/* Footer */
-footer {
-  background: #05080c;
-  padding: 30px;
-  text-align: center;
-  color: #aaa;
-  margin-top: 40px;
-}
+    /* Footer */
+    footer {
+      background: #05080c;
+      padding: 30px;
+      text-align: center;
+      color: #aaa;
+      margin-top: 40px;
+    }
 
-footer a {
-  color: #6cff6c;
-  text-decoration: none;
-}
-</style>
+    footer a {
+      color: #6cff6c;
+      text-decoration: none;
+    }
 
+    /* ستايلات المقال الإضافية */
+    .article-image {
+      width: 100%;
+      height: auto;
+      border-radius: 12px;
+      margin-bottom: 30px;
+      display: block;
+    }
+    pre {
+      background: #080c11;
+      padding: 20px;
+      border-radius: 10px;
+      overflow-x: auto;
+      border: 1px solid #1e2733;
+    }
+    code {
+      color: #ffd84d;
+      font-family: 'Consolas', 'Monaco', monospace;
+    }
+    .article-date {
+      color: #888;
+      font-size: 14px;
+      margin-bottom: 30px;
+      font-style: italic;
+    }
+  </style>
 </head>
 <body>
 
@@ -201,10 +226,10 @@ footer a {
 </nav>
 
 {{ content }}
+
 {% if page.layout == "default" and page.title != "Home" %}
 <div class="container" style="text-align: center; margin: 40px auto; max-width: 800px;">
   <span style="color: #444; font-size: 12px; display: block; margin-bottom: 5px;">Advertisement</span>
-  
   <ins class="adsbygoogle"
        style="display:block; text-align:center;"
        data-ad-layout="in-article"
@@ -216,6 +241,7 @@ footer a {
   </script>
 </div>
 {% endif %}
+
 <footer>
   <p>© 2026 FlutPulse. All rights reserved.</p>
   <p>
