@@ -143,14 +143,20 @@
       box-shadow: 0 10px 30px rgba(0,0,0,0.5);
     }
 
-    /* Target ONLY the main article title to style and center properly */
+    /* Target ONLY the main article title to style and center properly with embedded emojis */
     .article-main-content > h1:first-of-type {
       font-size: 38px;
-      text-align: center !important;
+      color: #fff;
       margin-top: 20px;
       margin-bottom: 25px;
-      color: #fff;
-      display: inline-block;
+      
+      /* Flexbox layout to align title text and emoji inline smoothly */
+      display: flex !important;
+      align-items: center;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 12px;
+      text-align: center !important;
       width: 100%;
     }
 
