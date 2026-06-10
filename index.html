@@ -33,7 +33,7 @@ title: Home
     {% for post in site.posts %}
     <div class="card">
       {% if post.image %}
-        <img src="{{ post.image }}" class="card-img" alt="{{ post.title }}">
+       <img src="{{ post.image | relative_url }}" class="card-img" alt="{{ post.title }}">
       {% endif %}
       <h3>{{ post.title }}</h3>
       <p>{{ post.excerpt }}</p>
