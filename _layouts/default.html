@@ -201,7 +201,21 @@ footer a {
 </nav>
 
 {{ content }}
-
+{% if page.layout == "default" and page.title != "Home" %}
+<div class="container" style="text-align: center; margin: 40px auto; max-width: 800px;">
+  <span style="color: #444; font-size: 12px; display: block; margin-bottom: 5px;">Advertisement</span>
+  
+  <ins class="adsbygoogle"
+       style="display:block; text-align:center;"
+       data-ad-layout="in-article"
+       data-ad-format="fluid"
+       data-ad-client="ca-pub-XXXXXXXXXXXXXXXX"
+       data-ad-slot="ZZZZZZZZZZ"></ins>
+  <script>
+       (adsbygoogle = window.adsbygoogle || []).push({});
+  </script>
+</div>
+{% endif %}
 <footer>
   <p>© 2026 FlutPulse. All rights reserved.</p>
   <p>
