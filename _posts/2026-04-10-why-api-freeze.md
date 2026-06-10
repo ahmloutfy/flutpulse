@@ -1,4 +1,3 @@
---- Jekyll Markdown File Content (2026-06-10-why-api-freeze.md) ---
 ---
 layout: default
 title: "Why your API calls freeze your Flutter UI 🚫"
