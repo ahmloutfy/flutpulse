@@ -227,16 +227,20 @@
 {% endif %}
 
 {% if page.layout == "default" and page.title != "Home" %}
-<div style="text-align: center; margin: 40px auto; max-width: 800px;">
-  <span style="color: #444; font-size: 12px; display: block; margin-bottom: 5px;">Advertisement</span>
+<div style="text-align: center; margin: 40px auto; max-width: 800px; background: #121821; padding: 15px; border-radius: 8px; border: 1px dashed #444;">
+  <span style="color: #6cff6c; font-size: 12px; display: block; margin-bottom: 10px; font-weight: bold;">[ AdSense Test Preview ]</span>
+  
   <ins class="adsbygoogle"
        style="display:block; text-align:center;"
        data-ad-layout="in-article"
        data-ad-format="fluid"
-       data-ad-client="ca-pub-XXXXXXXXXXXXXXXX"
-       data-ad-slot="ZZZZZZZZZZ"></ins>
-  <script>
-       (adsbygoogle = window.adsbygoogle || []).push({});
+       data-ad-client="ca-pub-1234567890123456" data-ad-slot="1234567890"></ins>        <script>
+       // Activate Test Mode globally for local testing
+       (window.adsbygoogle = window.adsbygoogle || []).push({
+            params: {
+                google_ad_test: "on"
+            }
+       });
   </script>
 </div>
 {% endif %}
