@@ -84,42 +84,41 @@
     .btn-primary { background: linear-gradient(90deg, #6cff6c, #ffd84d); color: #000; }
     .btn-secondary { border: 1px solid #6cff6c; color: #6cff6c; }
 
-    /* 🔽 الـ CSS المفقود اللي هيخلي الكلمات ترجع أزرار فوراً 🔽 */
-    .categories-section {
-      text-align: center;
-      padding: 40px 20px;
-    }
-    .categories-section h2 {
-      font-size: 28px;
-      margin-bottom: 20px;
-    }
-    .categories-container {
-      display: flex;
+    /* ==================================================== */
+    /* 2. Category Buttons Central Styles                   */
+    /* ==================================================== */
+    .categories-container, [class*="categories"] {
+      display: flex !important;
       justify-content: center;
       gap: 15px;
       flex-wrap: wrap;
-      margin-top: 15px;
+      margin: 20px auto;
+      padding: 10px;
     }
-    .category-btn {
-      background: #121821;
-      color: #fff;
-      padding: 12px 24px;
-      border-radius: 8px;
-      text-decoration: none;
-      font-weight: bold;
-      border: 1px solid #222;
-      transition: 0.3s ease;
+
+    /* Force links inside category blocks to render as professional buttons */
+    .categories-container a, [class*="categories"] a {
+      display: inline-block !important;
+      background: #121821 !important;
+      color: #fff !important;
+      padding: 10px 20px !important;
+      border-radius: 8px !important;
+      text-decoration: none !important;
+      font-weight: bold !important;
+      border: 1px solid #222 !important;
+      transition: 0.3s ease !important;
+      white-space: nowrap !important;
     }
-    .category-btn:hover {
-      border-color: #6cff6c;
-      color: #6cff6c;
-      transform: translateY(-3px);
-      box-shadow: 0 5px 15px rgba(108, 255, 108, 0.2);
+
+    .categories-container a:hover, [class*="categories"] a:hover {
+      border-color: #6cff6c !important;
+      color: #6cff6c !important;
+      transform: translateY(-3px) !important;
+      box-shadow: 0 5px 15px rgba(108, 255, 108, 0.2) !important;
     }
-    /* 🔼 الـ CSS المفقود اللي هيخلي الكلمات ترجع أزرار فوراً 🔼 */
 
     /* ==================================================== */
-    /* 2. Central Article Page Styles (Centered Layout)     */
+    /* 3. Central Article Page Styles (Centered Layout)     */
     /* ==================================================== */
     .article-layout-wrapper {
       display: block;
@@ -144,7 +143,7 @@
       box-shadow: 0 10px 30px rgba(0,0,0,0.5);
     }
 
-    /* Target ONLY the main article title */
+    /* Target ONLY the main article title to style and center properly */
     .article-main-content > h1:first-of-type {
       font-size: 38px;
       text-align: center !important;
