@@ -28,9 +28,8 @@ title: Home
   </script>
 <div class="container">
   <h2>Latest Articles</h2>
-  <div class="grid">
-
-{% for post in site.posts %}
+<div class="grid">
+  {% for post in site.posts %}
   <div class="card">
     {% if post.image %}
       <img src="{{ post.image | relative_url }}" class="card-img" alt="{{ post.title }}">
@@ -39,9 +38,8 @@ title: Home
     <p>{{ post.excerpt }}</p>
     <a href="{{ post.url | relative_url }}" class="btn btn-primary">Read More</a>
   </div>
-{% endfor %}
-
-  </div>
+  {% endfor %}
+</div>
 </div>
 
 <div class="container">
