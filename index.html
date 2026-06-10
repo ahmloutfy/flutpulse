@@ -30,16 +30,16 @@ title: Home
   <h2>Latest Articles</h2>
   <div class="grid">
 
-    {% for post in site.posts %}
-    <div class="card">
-      {% if post.image %}
-       <img src="{{ post.image | relative_url }}" class="card-img" alt="{{ post.title }}">
-      {% endif %}
-      <h3>{{ post.title }}</h3>
-      <p>{{ post.excerpt }}</p>
-      <a href="{{ post.url | relative_url }}" class="btn btn-primary">Read More</a>
-    </div>
-    {% endfor %}
+{% for post in site.posts %}
+  <div class="card">
+    {% if post.image %}
+      <img src="{{ post.image | relative_url }}" class="card-img" alt="{{ post.title }}">
+    {% endif %}
+    <h3>{{ post.title }}</h3>
+    <p>{{ post.excerpt }}</p>
+    <a href="{{ post.url | relative_url }}" class="btn btn-primary">Read More</a>
+  </div>
+{% endfor %}
 
   </div>
 </div>
