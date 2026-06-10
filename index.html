@@ -1,206 +1,7 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>FlutPulse</title>
-
-<style>
-body {
-  margin: 0;
-  font-family: Arial, sans-serif;
-  background: #0b0f14;
-  color: #fff;
-}
-
-/* Navbar */
-nav {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 15px 30px;
-  border-bottom: 1px solid #222;
-}
-
-nav img {
-  height: 60px;
-}
-
-nav a {
-  color: #ccc;
-  margin-left: 20px;
-  text-decoration: none;
-  font-weight: 500;
-  position: relative;
-  transition: 0.3s;
-}
-
-nav a:hover {
-  color: #6cff6c;
-}
-
-nav a::after {
-  content: "";
-  position: absolute;
-  width: 0;
-  height: 2px;
-  bottom: -4px;
-  left: 0;
-  background: linear-gradient(90deg, #6cff6c, #ffd84d);
-  transition: 0.3s;
-}
-
-nav a:hover::after {
-  width: 100%;
-}
-
-/* Hero */
-.hero {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 60px 30px;
-  gap: 40px;
-  flex-wrap: wrap;
-}
-
-.hero-text {
-  flex: 1;
-  min-width: 300px;
-  margin-left: 80px;
-}
-
-.hero-logo {
-  flex: 1;
-  text-align: center;
-}
-
-.hero-logo img {
-  width: 320px;
-  max-width: 100%;
-  filter: drop-shadow(0 0 20px #6cff6c);
-}
-
-.hero h1 {
-  font-size: 42px;
-}
-
-.hero span {
-  background: linear-gradient(90deg, #6cff6c, #ffd84d);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-}
-
-.hero p {
-  color: #aaa;
-}
-
-/* Buttons */
-.btn {
-  padding: 10px 20px;
-  margin-top: 10px;
-  display: inline-block;
-  border-radius: 6px;
-  text-decoration: none;
-}
-
-.btn-primary {
-  background: linear-gradient(90deg, #6cff6c, #ffd84d);
-  color: #000;
-}
-
-.btn-secondary {
-  border: 1px solid #6cff6c;
-  color: #6cff6c;
-}
-
-/* Container */
-.container {
-  padding: 30px;
-}
-
-/* Grid */
-.grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 20px;
-}
-
-/* Card */
-.card {
-  background: #121821;
-  border-radius: 12px;
-  overflow: hidden;
-  transition: 0.3s;
-  box-shadow: 0 4px 15px rgba(0,0,0,0.2);
-  display: flex;
-  flex-direction: column;
-}
-
-.card:hover {
-  transform: translateY(-6px);
-}
-
-/* Card Image FIX */
-.card-img {
-  width: 100%;
-  height: 180px;
-  object-fit: cover;
-  display: block;
-}
-
-/* Card content spacing */
-.card h3 {
-  margin: 15px;
-}
-
-.card p {
-  margin: 0 15px 15px;
-  color: #aaa;
-}
-
-.card .btn {
-  margin: 0 15px 15px;
-  width: fit-content;
-}
-
-/* Category */
-.category {
-  text-align: center;
-  padding: 20px;
-  background: #121821;
-  border-radius: 10px;
-}
-
-/* Footer */
-footer {
-  background: #05080c;
-  padding: 30px;
-  text-align: center;
-  color: #aaa;
-  margin-top: 40px;
-}
-
-footer a {
-  color: #6cff6c;
-  text-decoration: none;
-}
-</style>
-
-</head>
-
-<body>
-
-<nav>
-  <img src="flutpulse_logo.png" alt="FlutPulse Logo">
-  <div>
-    <a href="#">Home</a>
-    <a href="#">Articles</a>
-    <a href="#">Categories</a>
-    <a href="#">About</a>
-    <a href="#">Contact</a>
-  </div>
-</nav>
+---
+layout: default
+title: Home
+---
 
 <section class="hero">
   <div class="hero-text">
@@ -209,42 +10,42 @@ footer a {
     <a href="#" class="btn btn-primary">Browse Articles</a>
     <a href="#" class="btn btn-secondary">Explore Categories</a>
   </div>
-
   <div class="hero-logo">
     <img src="flutpulse_logo.png" alt="FlutPulse">
   </div>
 </section>
-
+<div class="container" style="text-align: center; margin: 20px auto;">
+  <span style="color: #444; font-size: 12px; display: block; margin-bottom: 5px;">Advertisement</span>
+  
+  <ins class="adsbygoogle"
+       style="display:block"
+       data-ad-client="ca-pub-XXXXXXXXXXXXXXXX"
+       data-ad-slot="YYYYYYYYYY"
+       data-ad-format="auto"
+       data-full-width-responsive="true"></ins>
+  <script>
+       (adsbygoogle = window.adsbygoogle || []).push({});
+  </script>
 <div class="container">
   <h2>Latest Articles</h2>
-
   <div class="grid">
 
+    {% for post in site.posts %}
     <div class="card">
-      <img src="/flutpulse/images/articles/why-api-freeze.jpg" class="article-image">
-      <h3>Why API Calls Freeze Flutter UI</h3>
-      <p>Learn why your app freezes and how to fix it properly.</p>
-      <a href="articles/why-api-freeze.html" class="btn btn-primary">Read More</a>
+      {% if post.image %}
+        <img src="{{ post.image }}" class="card-img" alt="{{ post.title }}">
+      {% endif %}
+      <h3>{{ post.title }}</h3>
+      <p>{{ post.excerpt }}</p>
+      <a href="{{ post.url | relative_url }}" class="btn btn-primary">Read More</a>
     </div>
-
-    <div class="card">
-      <h3>Dart Null Safety Fix</h3>
-      <p>Understand and resolve common null safety issues in Dart.</p>
-      <a href="#" class="btn btn-primary">Read More</a>
-    </div>
-
-    <div class="card">
-      <h3>Gradle Build Error Fix</h3>
-      <p>Fix Android build and Gradle-related issues.</p>
-      <a href="#" class="btn btn-primary">Read More</a>
-    </div>
+    {% endfor %}
 
   </div>
 </div>
 
 <div class="container">
   <h2>Categories</h2>
-
   <div class="grid">
     <div class="category">Flutter</div>
     <div class="category">Dart</div>
@@ -260,14 +61,3 @@ footer a {
     with clear, practical, and developer-friendly solutions.
   </p>
 </div>
-
-<footer>
-  <p>© 2026 FlutPulse. All rights reserved.</p>
-  <p>
-    <a href="https://www.facebook.com/flutpulse">Facebook</a> |
-    <a href="mailto:flutpulse@proton.me">Contact</a>
-  </p>
-</footer>
-
-</body>
-</html>
