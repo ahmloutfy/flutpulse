@@ -143,22 +143,17 @@
       box-shadow: 0 10px 30px rgba(0,0,0,0.5);
     }
 
-    /* Target ONLY the main article title to style and center properly with embedded emojis */
-    .article-main-content > h1:first-of-type {
-      font-size: 38px;
-      color: #fff;
-      margin-top: 20px;
-      margin-bottom: 25px;
-      
-      /* Flexbox layout to align title text and emoji inline smoothly */
-      display: flex !important;
-      align-items: center;
-      justify-content: center;
-      flex-wrap: wrap;
-      gap: 12px;
-      text-align: center !important;
-      width: 100%;
-    }
+/* Target ONLY the main article title - Bound to content width to prevent emoji splitting */
+.article-main-content > h1:first-of-type {
+  font-size: 38px;
+  color: #fff;
+  margin: 20px auto 25px auto; /* Centering the block itself using margins */
+  
+  display: block;
+  width: fit-content;       /* Shrinks the container width to fit the exact text + emoji length */
+  max-width: 100%;          /* Ensures responsiveness on small mobile screens */
+  text-align: center;
+}
 
     .article-main-content {
       font-size: 18px;
