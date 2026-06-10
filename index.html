@@ -14,9 +14,9 @@ title: Home
     <img src="flutpulse_logo.png" alt="FlutPulse">
   </div>
 </section>
+
 <div class="container" style="text-align: center; margin: 20px auto;">
   <span style="color: #444; font-size: 12px; display: block; margin-bottom: 5px;">Advertisement</span>
-  
   <ins class="adsbygoogle"
        style="display:block"
        data-ad-client="ca-pub-XXXXXXXXXXXXXXXX"
@@ -26,35 +26,37 @@ title: Home
   <script>
        (adsbygoogle = window.adsbygoogle || []).push({});
   </script>
-<div class="container">
+</div>
+
+<div class="container" style="text-align: center;">
   <h2>Latest Articles</h2>
-<div class="grid">
-  {% for post in site.posts %}
-  <div class="card">
-    {% if post.image %}
-      <img src="{{ post.image | relative_url }}" class="card-img" alt="{{ post.title }}">
-    {% endif %}
-    <h3>{{ post.title }}</h3>
-    <p>{{ post.excerpt }}</p>
-    <a href="{{ post.url | relative_url }}" class="btn btn-primary">Read More</a>
-  </div>
-  {% endfor %}
-</div>
-</div>
-
-<div class="container">
-  <h2>Categories</h2>
   <div class="grid">
-    <div class="category">Flutter</div>
-    <div class="category">Dart</div>
-    <div class="category">Android</div>
-    <div class="category">Error Fixes</div>
+    {% for post in site.posts %}
+    <div class="card">
+      {% if post.image %}
+        <img src="{{ post.image | relative_url }}" class="card-img" alt="{{ post.title }}">
+      {% endif %}
+      <h3>{{ post.title }}</h3>
+      <p>{{ post.excerpt }}</p>
+      <a href="{{ post.url | relative_url }}" class="btn btn-primary">Read More</a>
+    </div>
+    {% endfor %}
   </div>
 </div>
 
-<div class="container">
+<div class="container" style="text-align: center;">
+  <h2>Categories</h2>
+  <div class="categories-container">
+    <a href="#" class="category-btn">Flutter</a>
+    <a href="#" class="category-btn">Dart</a>
+    <a href="#" class="category-btn">Android</a>
+    <a href="#" class="category-btn">Error Fixes</a>
+  </div>
+</div>
+
+<div class="container" style="text-align: center; margin-top: 40px;">
   <h2>About FlutPulse</h2>
-  <p>
+  <p style="max-width: 600px; margin: 0 auto; color: #aaa; line-height: 1.6;">
     FlutPulse is a technical blog focused on solving real-world Flutter problems 
     with clear, practical, and developer-friendly solutions.
   </p>
