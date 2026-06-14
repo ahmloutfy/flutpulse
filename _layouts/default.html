@@ -17,17 +17,12 @@
     /* Layout Wrapper */
     .article-layout-wrapper { display: block; max-width: 800px; margin: 50px auto; padding: 0 20px; }
 
-    /* Article Title & Content Styles */
-    .article-title { 
-      font-size: 38px; color: #fff; margin: 20px auto 25px auto; 
-      display: block !important; text-align: center; line-height: 1.2; 
-      word-wrap: break-word; overflow-wrap: break-word; max-width: 100%; 
-    }
+    /* Article Content Styles */
     .article-main-content { font-size: 18px; line-height: 1.8; color: #e0e0e0; }
     pre { background: #080c11; padding: 20px; border-radius: 10px; overflow-x: auto; border: 1px solid #1e2733; }
     code { color: #ffd84d; font-family: 'Consolas', monospace; }
 
-    /* Card Layout System */
+    /* Card Layout System (Flexbox for uniform button alignment) */
     .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 20px; align-items: stretch; }
     .card { background: #121821; border-radius: 12px; overflow: hidden; display: flex; flex-direction: column; height: 100%; transition: 0.3s; }
     .card-content { flex: 1; padding: 15px; }
@@ -50,8 +45,6 @@
   {{ content }}
 {% else %}
   <div class="article-layout-wrapper">
-    <h1 class="article-title">{{ page.title }}</h1>
-    
     <div class="article-main-content">
       {% assign paragraphs = content | split: "</p>" %}
       {% for para in paragraphs %}
