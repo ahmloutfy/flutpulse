@@ -5,280 +5,69 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>{{ page.title }} | FlutPulse</title>
   <style>
-    /* Global Styles */
-    body {
-      margin: 0;
-      font-family: Arial, sans-serif;
-      background: #0b0f14;
-      color: #fff;
-    }
+    /* Global Reset & Base Styles */
+    body { margin: 0; font-family: Arial, sans-serif; background: #0b0f14; color: #fff; }
 
-    /* Shared Navbar */
-    nav {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 15px 30px;
-      border-bottom: 1px solid #222;
-    }
+    /* Navbar Styling */
+    nav { display: flex; justify-content: space-between; align-items: center; padding: 15px 30px; border-bottom: 1px solid #222; }
     nav img { height: 60px; }
-    nav a {
-      color: #ccc;
-      margin-left: 20px;
-      text-decoration: none;
-      font-weight: 500;
-      position: relative;
-      transition: 0.3s;
-    }
+    nav a { color: #ccc; margin-left: 20px; text-decoration: none; font-weight: 500; position: relative; transition: 0.3s; }
     nav a:hover { color: #6cff6c; }
-    nav a::after {
-      content: "";
-      position: absolute;
-      width: 0;
-      height: 2px;
-      bottom: -4px;
-      left: 0;
-      background: linear-gradient(90deg, #6cff6c, #ffd84d);
-      transition: 0.3s;
-    }
-    nav a:hover::after { width: 100%; }
+    
+    /* Layout Wrapper */
+    .article-layout-wrapper { display: block; max-width: 800px; margin: 50px auto; padding: 0 20px; }
 
-    /* ==================================================== */
-    /* 1. Home Page Styles (Hero & Grid)                    */
-    /* ==================================================== */
-    .hero {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 60px 30px;
-      gap: 40px;
-      flex-wrap: wrap;
-    }
-    .hero-text { flex: 1; min-width: 300px; margin-left: 80px; }
-    .hero-logo { flex: 1; text-align: center; }
-    .hero-logo img { width: 320px; max-width: 100%; filter: drop-shadow(0 0 20px #6cff6c); }
-    .hero h1 { font-size: 42px; }
-    .hero span { background: linear-gradient(90deg, #6cff6c, #ffd84d); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
-    .hero p { color: #aaa; }
+    /* Article Content Styles */
+    .article-main-content { font-size: 18px; line-height: 1.8; color: #e0e0e0; }
+    pre { background: #080c11; padding: 20px; border-radius: 10px; overflow-x: auto; border: 1px solid #1e2733; }
+    code { color: #ffd84d; font-family: 'Consolas', monospace; }
 
-    .container { padding: 30px; }
-    .grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-      gap: 20px;
-    }
-    .card {
-      background: #121821;
-      border-radius: 12px;
-      overflow: hidden;
-      transition: 0.3s;
-      box-shadow: 0 4px 15px rgba(0,0,0,0.2);
-      display: flex;
-      flex-direction: column;
-    }
-    .card:hover { transform: translateY(-6px); }
-    .card-img { width: 100%; height: 180px; object-fit: cover; display: block; }
-    .card h3, .card p, .card .btn { margin: 15px; }
-
-    .btn { padding: 10px 20px; margin-top: 10px; display: inline-block; border-radius: 6px; text-decoration: none; }
+    /* Card Layout System (Flexbox for uniform button alignment) */
+    .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 20px; align-items: stretch; }
+    .card { background: #121821; border-radius: 12px; overflow: hidden; display: flex; flex-direction: column; height: 100%; transition: 0.3s; }
+    .card-content { flex: 1; padding: 15px; }
+    .card .btn { margin: 15px; margin-top: auto; }
+    .btn { padding: 10px 20px; display: inline-block; border-radius: 6px; text-decoration: none; text-align: center; font-weight: bold; }
     .btn-primary { background: linear-gradient(90deg, #6cff6c, #ffd84d); color: #000; }
-    .btn-secondary { border: 1px solid #6cff6c; color: #6cff6c; }
 
-    /* ==================================================== */
-    /* 2. Category Buttons Central Styles                   */
-    /* ==================================================== */
-    .categories-container, [class*="categories"] {
-      display: flex !important;
-      justify-content: center;
-      gap: 15px;
-      flex-wrap: wrap;
-      margin: 20px auto;
-      padding: 10px;
-    }
-
-    .categories-container a, [class*="categories"] a {
-      display: inline-block !important;
-      background: #121821 !important;
-      color: #fff !important;
-      padding: 10px 20px !important;
-      border-radius: 8px !important;
-      text-decoration: none !important;
-      font-weight: bold !important;
-      border: 1px solid #222 !important;
-      transition: 0.3s ease !important;
-      white-space: nowrap !important;
-    }
-
-    .categories-container a:hover, [class*="categories"] a:hover {
-      border-color: #6cff6c !important;
-      color: #6cff6c !important;
-      transform: translateY(-3px) !important;
-      box-shadow: 0 5px 15px rgba(108, 255, 108, 0.2) !important;
-    }
-
-    /* ==================================================== */
-    /* 3. Central Article Page Styles (Centered Layout)     */
-    /* ==================================================== */
-    .article-layout-wrapper {
-      display: block;
-      max-width: 800px;
-      margin: 50px auto;
-      padding: 0 20px;
-      box-sizing: border-box;
-    }
-
-    .article-image-box {
-      text-align: center;
-      margin-bottom: 40px;
-      width: 100%;
-    }
-
-    .article-central-img {
-      max-width: 100%;
-      height: auto;
-      max-height: 400px;
-      object-fit: contain;
-      border-radius: 12px;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.5);
-    }
-
-    /* Title Emoji Wrap Protection */
-    .article-main-content > h1:first-of-type {
-      font-size: 38px;
-      color: #fff;
-      margin: 20px auto 25px auto;
-      display: inline-flex !important;
-      align-items: center;
-      justify-content: center;
-      white-space: nowrap !important;
-      gap: 12px;
-      width: auto;
-    }
-
-    @media (max-width: 600px) {
-      .article-main-content > h1:first-of-type {
-        font-size: 26px;
-        white-space: normal !important;
-      }
-    }
-
-    .article-main-content {
-      font-size: 18px;
-      line-height: 1.8;
-      color: #e0e0e0;
-      text-align: left;
-    }
-
-    /* Code Blocks */
-    pre {
-      background: #080c11;
-      padding: 20px;
-      border-radius: 10px;
-      overflow-x: auto;
-      border: 1px solid #1e2733;
-    }
-    code {
-      color: #ffd84d;
-      font-family: 'Consolas', monospace;
-    }
-
-    /* Shared Footer */
+    /* Footer */
     footer { background: #05080c; padding: 30px; text-align: center; color: #aaa; margin-top: 60px; }
-    footer a { color: #6cff6c; text-decoration: none; }
   </style>
 </head>
 <body>
 
 <nav>
   <img src="{{ site.baseurl }}/flutpulse_logo.png" alt="FlutPulse Logo">
-  <div>
-    <a href="{{ site.baseurl }}/">Home</a>
-    <a href="#">Articles</a>
-    <a href="#">Categories</a>
-    <a href="#">About</a>
-    <a href="#">Contact</a>
-  </div>
+  <div><a href="{{ site.baseurl }}/">Home</a><a href="#">Articles</a></div>
 </nav>
 
 {% if page.title == "Home" %}
-  
   {{ content }}
-
 {% else %}
-  
   <div class="article-layout-wrapper">
-    
-    {% if page.image %}
-    <div class="article-image-box">
-      <img class="article-central-img" src="{{ page.image | relative_url }}" alt="{{ page.title }}">
-    </div>
-    {% endif %}
-
     <div class="article-main-content">
       {% assign paragraphs = content | split: "</p>" %}
       {% for para in paragraphs %}
         {{ para }}</p>
-        
         {% if forloop.index == 2 %}
-          <div style="text-align: center; margin: 35px auto; max-width: 100%;">
-            <span style="color: #444; font-size: 11px; display: block; margin-bottom: 6px;">Advertisement</span>
-            <div style="width: 100%; max-width: 650px; min-height: 120px; margin: 0 auto; position: relative; background: #121821; border-radius: 8px; border: 1px dashed #263345; display: flex; align-items: center; justify-content: space-between; box-sizing: border-box; padding: 15px 25px; overflow: hidden;">
-              
-              <div style="display: flex; align-items: center; gap: 15px; text-align: left;">
-                <div style="font-size: 28px;">🚀</div>
-                <div>
-                  <div style="color: #6cff6c; font-family: monospace; font-size: 14px; font-weight: bold;">IN-ARTICLE NATIVE AD</div>
-                  <div style="color: #888; font-size: 12px; margin-top: 3px;">Fluid responsive ad units blended smoothly within text content.</div>
-                </div>
-              </div>
-              <div style="background: linear-gradient(90deg, #6cff6c, #ffd84d); color: #000; font-size: 11px; font-weight: bold; padding: 8px 16px; border-radius: 4px; text-transform: uppercase; white-space: nowrap;">Try Now</div>
-
-              <ins class="adsbygoogle"
-                   style="display: block; width: 100%; height: 100%; position: absolute; top: 0; left: 0; z-index: 10;"
-                   data-ad-layout="in-article"
-                   data-ad-format="fluid"
-                   data-ad-client="ca-pub-XXXXXXXXXXXXXXXX"
-                   data-ad-slot="MID_AD_SLOT"></ins>
+          <div style="text-align: center; margin: 35px auto;">
+            <span style="color: #444; font-size: 11px; display: block;">Advertisement</span>
+            <div style="width: 100%; max-width: 650px; position: relative; background: #121821; border: 1px dashed #263345; padding: 15px;">
+              <ins class="adsbygoogle" style="display: block; width: 100%; height: 120px;" data-ad-format="fluid" data-ad-client="ca-pub-XXXXXXXX" data-ad-slot="MID_AD"></ins>
             </div>
           </div>
         {% endif %}
       {% endfor %}
     </div>
-
   </div>
-
 {% endif %}
 
-{% if page.layout == "default" and page.title != "Home" %}
-<div style="text-align: center; margin: 45px auto; max-width: 800px;">
-  <span style="color: #444; font-size: 12px; display: block; margin-bottom: 8px;">Advertisement</span>
-  <div style="width: 300px; height: 250px; margin: 0 auto; position: relative; background: #121821; border-radius: 8px; border: 1px dashed #263345; display: flex; flex-direction: column; align-items: center; justify-content: center; box-sizing: border-box; padding: 20px; overflow: hidden;">
-    
-    <div style="font-size: 24px; margin-bottom: 10px;">⚡</div>
-    <div style="color: #6cff6c; font-family: monospace; font-size: 14px; font-weight: bold; letter-spacing: 1px;">FLUTPULSE ADSENSE</div>
-    <div style="color: #888; font-size: 12px; margin-top: 5px; line-height: 1.4;">Standard 300x250 Ad Block<br>Ready for Production</div>
-    <div style="margin-top: 15px; background: linear-gradient(90deg, #6cff6c, #ffd84d); color: #000; font-size: 11px; font-weight: bold; padding: 6px 16px; border-radius: 4px; text-transform: uppercase;">Learn More</div>
-
-    <ins class="adsbygoogle"
-         style="display: block; width: 300px; height: 250px; position: absolute; top: 0; left: 0; z-index: 10;"
-         data-ad-client="ca-pub-XXXXXXXXXXXXXXXX"
-         data-ad-slot="END_AD_SLOT"></ins>
-  </div>
+{% if page.title != "Home" %}
+<div style="text-align: center; margin: 45px auto;">
+  <ins class="adsbygoogle" style="display:block; width:300px; height:250px; margin:0 auto;" data-ad-client="ca-pub-XXXXXXXX" data-ad-slot="END_AD"></ins>
 </div>
 {% endif %}
 
-<script>
-     // Smooth engine trigger for all injected units
-     (window.adsbygoogle = window.adsbygoogle || []).push({});
-</script>
-
-<footer>
-  <p>© 2026 FlutPulse. All rights reserved.</p>
-  <p>
-    <a href="https://www.facebook.com/flutpulse">Facebook</a> |
-    <a href="mailto:flutpulse@proton.me">Contact</a>
-  </p>
-</footer>
-
+<script>(window.adsbygoogle = window.adsbygoogle || []).push({});</script>
 </body>
 </html>
