@@ -62,10 +62,13 @@
     .hero p { color: #aaa; }
 
     .container { padding: 30px; }
+    
+    /* 🎯 TARGETED FIX: Perfect Flexbox Alignment for Buttons Without Changing HTML */
     .grid {
       display: grid;
       grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
       gap: 20px;
+      align-items: stretch; /* Forces all cards in the same row to match height */
     }
     .card {
       background: #121821;
@@ -74,18 +77,26 @@
       transition: 0.3s;
       box-shadow: 0 4px 15px rgba(0,0,0,0.2);
       display: flex;
-      flex-direction: column;
+      flex-direction: column; /* Allows internal vertical alignment controls */
     }
     .card:hover { transform: translateY(-6px); }
     .card-img { width: 100%; height: 180px; object-fit: cover; display: block; }
-    .card h3, .card p, .card .btn { margin: 15px; }
+    
+    /* Target only the typography elements inside card to stay together */
+    .card h3, .card p { margin: 15px; }
+    
+    /* Anchors the button perfectly to the very bottom boundary of the card container */
+    .card .btn { 
+      margin: 15px; 
+      margin-top: auto; /* Pushes button dynamically down if excerpt is short */
+    }
 
     .btn { padding: 10px 20px; margin-top: 10px; display: inline-block; border-radius: 6px; text-decoration: none; }
     .btn-primary { background: linear-gradient(90deg, #6cff6c, #ffd84d); color: #000; }
     .btn-secondary { border: 1px solid #6cff6c; color: #6cff6c; }
 
     /* ==================================================== */
-    /* 2. Category Buttons Central Styles                   */
+    /* 2. Category Buttons Central Styles                    */
     /* ==================================================== */
     .categories-container, [class*="categories"] {
       display: flex !important;
