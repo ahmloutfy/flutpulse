@@ -218,7 +218,7 @@
 <div style="text-align: center; margin: 40px auto; max-width: 800px;">
   <span style="color: #444; font-size: 12px; display: block; margin-bottom: 8px;">Advertisement</span>
   
-  <div style="width: 300px; height: 250px; margin: 0 auto; position: relative; background: #121821; border-radius: 8px; border: 1px dashed #263345; display: flex; flex-direction: column; align-items: center; justify-content: center; box-sizing: border-box; padding: 20px;">
+  <div style="width: 300px; height: 250px; margin: 0 auto; position: relative; background: #121821; border-radius: 8px; border: 1px dashed #263345; display: flex; flex-direction: column; align-items: center; justify-content: center; box-sizing: border-box; padding: 20px; overflow: hidden;">
     
     <div style="font-size: 24px; margin-bottom: 10px;">⚡</div>
     <div style="color: #6cff6c; font-family: monospace; font-size: 14px; font-weight: bold; letter-spacing: 1px;">FLUTPULSE ADSENSE</div>
@@ -226,17 +226,16 @@
     <div style="margin-top: 15px; background: linear-gradient(90deg, #6cff6c, #ffd84d); color: #000; font-size: 11px; font-weight: bold; padding: 6px 16px; border-radius: 4px; text-transform: uppercase;">Learn More</div>
 
     <ins class="adsbygoogle"
-         style="display:none; width:300px; height:250px; position: absolute; top:0; left:0;"
+         style="display: block; width: 300px; height: 250px; position: absolute; top: 0; left: 0; z-index: 10;"
          data-ad-client="ca-pub-XXXXXXXXXXXXXXXX"
          data-ad-slot="ZZZZZZZZZZ"></ins>
   </div>
 </div>
 <script>
-     // Triggers AdSense engine when deployed live
+     // Smooth engine trigger for production
      (adsbygoogle = window.adsbygoogle || []).push({});
 </script>
 {% endif %}
-
 <footer>
   <p>© 2026 FlutPulse. All rights reserved.</p>
   <p>
