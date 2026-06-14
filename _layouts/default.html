@@ -157,17 +157,20 @@
     }
 
     /* Title Emoji Wrap Protection */
-    .article-main-content > h1:first-of-type {
-      font-size: 38px;
-      color: #fff;
-      margin: 20px auto 25px auto;
-      display: inline-flex !important;
-      align-items: center;
-      justify-content: center;
-      white-space: nowrap !important;
-      gap: 12px;
-      width: auto;
-    }
+/* Title Wrap Protection Fixed */
+.article-main-content > h1:first-of-type {
+  font-size: 38px;
+  color: #fff;
+  margin: 20px auto 25px auto;
+  display: inline-flex !important;
+  align-items: center;
+  justify-content: center;
+  white-space: normal !important;
+  word-wrap: break-word !important;
+  gap: 12px;
+  width: auto;
+  text-align: center;
+}
 
     @media (max-width: 600px) {
       .article-main-content > h1:first-of-type {
