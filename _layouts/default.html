@@ -43,8 +43,28 @@
     }
     nav a:hover::after { width: 100%; }
 
-    /* ==================== Page Specific Styles (Hero, Cards, Articles, etc.) ==================== */
-    /* Paste all your existing CSS here (hero, grid, card, article-layout-wrapper, etc.) */
+    /* Footer - Centered and Fixed */
+    footer {
+      background: #05080c;
+      padding: 40px 20px;
+      text-align: center;
+      color: #aaa;
+      margin-top: 80px;
+      border-top: 1px solid #222;
+      width: 100%;
+    }
+    
+    footer p {
+      margin: 8px 0;
+    }
+
+    footer a {
+      color: #6cff6c;
+      text-decoration: none;
+    }
+
+    /* ==================== Page Specific Styles ==================== */
+    /* Paste all your remaining CSS here (hero, grid, cards, article-layout-wrapper, etc.) */
 
   </style>
 </head>
@@ -80,7 +100,7 @@
       {% for para in paragraphs %}
         {{ para }}</p>
         
-        <!-- In-article ad (shown only on articles, hidden on About and no_ads pages) -->
+        <!-- In-article advertisement (Hidden on About page and no_ads pages) -->
         {% if forloop.index == 2 and page.no_ads != true and page.title != "About FlutPulse" %}
           <div style="text-align: center; margin: 35px auto; max-width: 100%;">
             <span style="color: #444; font-size: 11px; display: block; margin-bottom: 6px;">Advertisement</span>
@@ -111,7 +131,7 @@
 
 {% endif %}
 
-<!-- Bottom banner ad (300x250) - Hidden on Home and About pages -->
+<!-- Bottom banner advertisement (300x250) - Hidden on Home & About -->
 {% if page.layout == "default" and page.title != "Home" and page.no_ads != true and page.title != "About FlutPulse" %}
 <div style="text-align: center; margin: 45px auto; max-width: 800px;">
   <span style="color: #444; font-size: 12px; display: block; margin-bottom: 8px;">Advertisement</span>
