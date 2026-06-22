@@ -5,6 +5,13 @@ permalink: /privacy_policy/
 no_ads: true
 ---
 
+<!-- Exclude publish date from About & Privacy Policy -->
+{% if page.title != "About FlutPulse" and page.title != "Privacy Policy" and page.no_ads != true %}
+  <p style="text-align: center; color: #888; font-size: 0.95rem; margin: 10px 0 30px 0;">
+    Published on {{ page.date | date: "%B %d, %Y" }}
+  </p>
+{% endif %}
+
 <div class="about-container" style="max-width: 800px; margin: 0 auto; padding: 40px 20px; font-family: 'Poppins', sans-serif; color: #ffffff;">
     
     <div style="text-align: center; margin-bottom: 40px;">
