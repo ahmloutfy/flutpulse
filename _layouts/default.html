@@ -63,7 +63,6 @@
 
     .container { padding: 30px; }
     
-    /* 🎯 THE EXACT CARD ALIGNMENT FIX */
     .grid {
       display: grid;
       grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
@@ -82,25 +81,21 @@
     .card:hover { transform: translateY(-6px); }
     .card-img { width: 100%; height: 180px; object-fit: cover; display: block; }
     
-    /* Pushes the paragraph element to grow and absorb vertical white space variances */
     .card h3 { margin: 15px 15px 5px 15px; }
     .card p { 
       margin: 0 15px 15px 15px; 
-      flex-grow: 1; /* Makes the paragraph fill the empty dynamic space seamlessly */
+      flex-grow: 1;
     }
     
-    /* Sets up precise layout alignment anchoring the button at the baseline */
     .card .btn { 
-      margin: auto 15px 15px 15px; /* Top auto margin ensures it stays locked at the bottom */
+      margin: auto 15px 15px 15px;
     }
 
     .btn { padding: 10px 20px; margin-top: 10px; display: inline-block; border-radius: 6px; text-decoration: none; }
     .btn-primary { background: linear-gradient(90deg, #6cff6c, #ffd84d); color: #000; }
     .btn-secondary { border: 1px solid #6cff6c; color: #6cff6c; }
 
-    /* ==================================================== */
-    /* 2. Category Buttons Central Styles                    */
-    /* ==================================================== */
+    /* Category Buttons */
     .categories-container, [class*="categories"] {
       display: flex !important;
       justify-content: center;
@@ -130,9 +125,7 @@
       box-shadow: 0 5px 15px rgba(108, 255, 108, 0.2) !important;
     }
 
-    /* ==================================================== */
-    /* 3. Central Article Page Styles (Centered Layout)     */
-    /* ==================================================== */
+    /* Article Page Styles */
     .article-layout-wrapper {
       display: block;
       max-width: 800px;
@@ -156,21 +149,19 @@
       box-shadow: 0 10px 30px rgba(0,0,0,0.5);
     }
 
-    /* Title Emoji Wrap Protection */
-/* Title Wrap Protection Fixed */
-.article-main-content > h1:first-of-type {
-  font-size: 38px;
-  color: #fff;
-  margin: 20px auto 25px auto;
-  display: inline-flex !important;
-  align-items: center;
-  justify-content: center;
-  white-space: normal !important;
-  word-wrap: break-word !important;
-  gap: 12px;
-  width: auto;
-  text-align: center;
-}
+    .article-main-content > h1:first-of-type {
+      font-size: 38px;
+      color: #fff;
+      margin: 20px auto 25px auto;
+      display: inline-flex !important;
+      align-items: center;
+      justify-content: center;
+      white-space: normal !important;
+      word-wrap: break-word !important;
+      gap: 12px;
+      width: auto;
+      text-align: center;
+    }
 
     @media (max-width: 600px) {
       .article-main-content > h1:first-of-type {
@@ -186,7 +177,6 @@
       text-align: left;
     }
 
-    /* Code Blocks */
     pre {
       background: #080c11;
       padding: 20px;
@@ -199,7 +189,7 @@
       font-family: 'Consolas', monospace;
     }
 
-    /* Shared Footer */
+    /* Footer */
     footer { background: #05080c; padding: 30px; text-align: center; color: #aaa; margin-top: 60px; }
     footer a { color: #6cff6c; text-decoration: none; }
   </style>
@@ -215,10 +205,11 @@
     <a href="#">Articles</a>
     <a href="#">Categories</a>
     <a href="{{ site.baseurl }}/about/">About</a>
-    <a href="{{ site.baseurl }}/privacy_policy/">Privacy Policy</a>
+    <a href="{{ site.baseurl }}/privacy-policy/">Privacy Policy</a>
     <a href="#">Contact</a>
   </div>
 </nav>
+
 {% if page.title == "Home" %}
   
   {{ content }}
@@ -238,7 +229,8 @@
       {% for para in paragraphs %}
         {{ para }}</p>
         
-        {% if forloop.index == 2 %}
+        <!-- In-article Ad - Hidden if no_ads: true -->
+        {% if forloop.index == 2 and page.no_ads != true %}
           <div style="text-align: center; margin: 35px auto; max-width: 100%;">
             <span style="color: #444; font-size: 11px; display: block; margin-bottom: 6px;">Advertisement</span>
             <div style="width: 100%; max-width: 650px; min-height: 120px; margin: 0 auto; position: relative; background: #121821; border-radius: 8px; border: 1px dashed #263345; display: flex; align-items: center; justify-content: space-between; box-sizing: border-box; padding: 15px 25px; overflow: hidden;">
@@ -268,7 +260,8 @@
 
 {% endif %}
 
-{% if page.layout == "default" and page.title != "Home" %}
+<!-- Bottom Ad - Hidden on Home + pages with no_ads: true -->
+{% if page.layout == "default" and page.title != "Home" and page.no_ads != true %}
 <div style="text-align: center; margin: 45px auto; max-width: 800px;">
   <span style="color: #444; font-size: 12px; display: block; margin-bottom: 8px;">Advertisement</span>
   <div style="width: 300px; height: 250px; margin: 0 auto; position: relative; background: #121821; border-radius: 8px; border: 1px dashed #263345; display: flex; flex-direction: column; align-items: center; justify-content: center; box-sizing: border-box; padding: 20px; overflow: hidden;">
@@ -287,7 +280,6 @@
 {% endif %}
 
 <script>
-     // Smooth engine trigger for all injected units
      (window.adsbygoogle = window.adsbygoogle || []).push({});
 </script>
 
