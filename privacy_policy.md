@@ -1,7 +1,7 @@
 ---
 layout: default
 title: "Privacy Policy"
-permalink: /privacy-policy/
+permalink: /privacy_policy/
 no_ads: true
 ---
 
