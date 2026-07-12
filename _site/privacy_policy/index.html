@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Privacy Policy | FlutPulse</title>
+  <style>
+    /* Global Styles */
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #0b0f14;
+      color: #fff;
+    }
+
+    /* Shared Navbar */
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 15px 30px;
+      border-bottom: 1px solid #222;
+    }
+    nav img { height: 60px; }
+    nav a {
+      color: #ccc;
+      margin-left: 20px;
+      text-decoration: none;
+      font-weight: 500;
+      position: relative;
+      transition: 0.3s;
+    }
+    nav a:hover { color: #6cff6c; }
+    nav a::after {
+      content: "";
+      position: absolute;
+      width: 0;
+      height: 2px;
+      bottom: -4px;
+      left: 0;
+      background: linear-gradient(90deg, #6cff6c, #ffd84d);
+      transition: 0.3s;
+    }
+    nav a:hover::after { width: 100%; }
+
+    /* ==================================================== */
+    /* 1. Home Page Styles (Hero & Grid)                    */
+    /* ==================================================== */
+    .hero {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 60px 30px;
+      gap: 40px;
+      flex-wrap: wrap;
+    }
+    .hero-text { flex: 1; min-width: 300px; margin-left: 80px; }
+    .hero-logo { flex: 1; text-align: center; }
+    .hero-logo img { width: 320px; max-width: 100%; filter: drop-shadow(0 0 20px #6cff6c); }
+    .hero h1 { font-size: 42px; }
+    .hero span { background: linear-gradient(90deg, #6cff6c, #ffd84d); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+    .hero p { color: #aaa; }
+
+    .container { padding: 30px; }
+    
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 20px;
+      align-items: stretch;
+    }
+    .card {
+      background: #121821;
+      border-radius: 12px;
+      overflow: hidden;
+      transition: 0.3s;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+      display: flex;
+      flex-direction: column;
+    }
+    .card:hover { transform: translateY(-6px); }
+    .card-img { width: 100%; height: 180px; object-fit: cover; display: block; }
+    
+    .card h3 { margin: 15px 15px 5px 15px; }
+    .card p { 
+      margin: 0 15px 15px 15px; 
+      flex-grow: 1;
+    }
+    
+    .card .btn { 
+      margin: auto 15px 15px 15px;
+    }
+
+    .btn { padding: 10px 20px; margin-top: 10px; display: inline-block; border-radius: 6px; text-decoration: none; }
+    .btn-primary { background: linear-gradient(90deg, #6cff6c, #ffd84d); color: #000; }
+    .btn-secondary { border: 1px solid #6cff6c; color: #6cff6c; }
+
+    /* Category Buttons */
+    .categories-container, [class*="categories"] {
+      display: flex !important;
+      justify-content: center;
+      gap: 15px;
+      flex-wrap: wrap;
+      margin: 20px auto;
+      padding: 10px;
+    }
+
+    .categories-container a, [class*="categories"] a {
+      display: inline-block !important;
+      background: #121821 !important;
+      color: #fff !important;
+      padding: 10px 20px !important;
+      border-radius: 8px !important;
+      text-decoration: none !important;
+      font-weight: bold !important;
+      border: 1px solid #222 !important;
+      transition: 0.3s ease !important;
+      white-space: nowrap !important;
+    }
+
+    .categories-container a:hover, [class*="categories"] a:hover {
+      border-color: #6cff6c !important;
+      color: #6cff6c !important;
+      transform: translateY(-3px) !important;
+      box-shadow: 0 5px 15px rgba(108, 255, 108, 0.2) !important;
+    }
+
+    /* Article Page Styles */
+    .article-layout-wrapper {
+      display: block;
+      max-width: 800px;
+      margin: 50px auto;
+      padding: 0 20px;
+      box-sizing: border-box;
+    }
+
+    .article-image-box {
+      text-align: center;
+      margin-bottom: 40px;
+      width: 100%;
+    }
+
+    .article-central-img {
+      max-width: 100%;
+      height: auto;
+      max-height: 400px;
+      object-fit: contain;
+      border-radius: 12px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+    }
+
+    .article-main-content > h1:first-of-type {
+      font-size: 38px;
+      color: #fff;
+      margin: 20px auto 25px auto;
+      display: inline-flex !important;
+      align-items: center;
+      justify-content: center;
+      white-space: normal !important;
+      word-wrap: break-word !important;
+      gap: 12px;
+      width: auto;
+      text-align: center;
+    }
+
+    @media (max-width: 600px) {
+      .article-main-content > h1:first-of-type {
+        font-size: 26px;
+        white-space: normal !important;
+      }
+    }
+
+    .article-main-content {
+      font-size: 18px;
+      line-height: 1.8;
+      color: #e0e0e0;
+      text-align: left;
+    }
+
+    pre {
+      background: #080c11;
+      padding: 20px;
+      border-radius: 10px;
+      overflow-x: auto;
+      border: 1px solid #1e2733;
+    }
+    code {
+      color: #ffd84d;
+      font-family: 'Consolas', monospace;
+    }
+
+    /* Footer */
+    footer { background: #05080c; padding: 30px; text-align: center; color: #aaa; margin-top: 60px; }
+    footer a { color: #6cff6c; text-decoration: none; }
+  </style>
+
+  <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-9Z6X50N6PL"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-9Z6X50N6PL');
+</script>
+  
+</head>
+<body>
+
+<nav>
+  <img src="/flutpulse_logo.png" 
+       alt="FlutPulse Logo" 
+       style="height: 80px;"> 
+  <div>
+    <a href="/">Home</a>
+    <a href="#">Articles</a>
+    <a href="#">Categories</a>
+    <a href="/about/">About</a>
+    <a href="/privacy_policy/">Privacy Policy</a>
+    <a href="#">Contact</a>
+  </div>
+</nav>
+
+
+  
+  <div class="article-layout-wrapper">
+    
+    
+
+    <div class="article-main-content">
+      
+      
+        <div class="about-container" style="max-width: 800px; margin: 0 auto; padding: 40px 20px; font-family: 'Poppins', sans-serif; color: #ffffff;">
+    
+    <div style="text-align: center; margin-bottom: 40px;">
+        <img src="/flutpulse_logo.png" alt="FlutPulse Logo" style="max-width: 150px; margin-bottom: 20px;" />
+        
+        <h1 style="font-size: 2.5rem; font-weight: 700; margin-bottom: 10px;">
+            Privacy <span style="color: #FFDE59;">Policy</span>
+        </h1>
+        <p style="font-size: 1.1rem; color: #a0aec0; max-width: 600px; margin: 0 auto; line-height: 1.6;">
+            Last updated: June 22, 2026
+        </p>
+        
+        <!-- In-article Ad - Hidden if no_ads: true -->
+        
+      
+        
+    </div>
+
+    <hr style="border: 0; height: 1px; background: linear-gradient(to right, transparent, #7ED957, transparent); margin: 40px 0;" />
+
+    <div class="article-main-content" style="font-size: 1.05rem; line-height: 1.85; color: #e2e8f0;">
+
+        <section style="margin-bottom: 45px;">
+            <h2 style="color: #7ED957; font-size: 1.8rem; margin-bottom: 18px;">1. Introduction</h2>
+            <p>
+                At <strong>FlutPulse</strong>, we value your privacy and are committed to protecting your personal information. 
+                This Privacy Policy explains how we collect, use, disclose, and safeguard your data when you visit our website.
+            </p>
+        
+        <!-- In-article Ad - Hidden if no_ads: true -->
+        
+      
+        
+        </section>
+
+        <section style="margin-bottom: 45px;">
+            <h2 style="color: #7ED957; font-size: 1.8rem; margin-bottom: 18px;">2. Information We Collect</h2>
+            <p>We may collect the following types of information:</p>
+        
+        <!-- In-article Ad - Hidden if no_ads: true -->
+        
+      
+        
+            <ul style="padding-left: 25px; line-height: 1.8;">
+                <li><strong>Personal Data:</strong> Name and email address when you contact us.</li>
+                <li><strong>Usage Data:</strong> IP address, browser type, device information, and pages visited.</li>
+                <li><strong>Cookies:</strong> Small data files used to enhance your experience and analyze traffic.</li>
+            </ul>
+        </section>
+
+        <section style="margin-bottom: 45px;">
+            <h2 style="color: #7ED957; font-size: 1.8rem; margin-bottom: 18px;">3. How We Use Your Information</h2>
+            <p>We use the collected information to:</p>
+        
+        <!-- In-article Ad - Hidden if no_ads: true -->
+        
+      
+        
+            <ul style="padding-left: 25px; line-height: 1.8;">
+                <li>Provide, maintain, and improve our services</li>
+                <li>Respond to your inquiries and provide support</li>
+                <li>Understand how users interact with our content</li>
+                <li>Comply with legal obligations</li>
+            </ul>
+        </section>
+
+        <section style="margin-bottom: 45px;">
+            <h2 style="color: #7ED957; font-size: 1.8rem; margin-bottom: 18px;">4. Cookies &amp; Third-Party Services</h2>
+            <p>
+                We use Google AdSense and analytics tools. These third parties may collect data according to their own privacy policies. 
+                You can control cookies through your browser settings.
+            </p>
+        
+        <!-- In-article Ad - Hidden if no_ads: true -->
+        
+      
+        
+        </section>
+
+        <section style="margin-bottom: 45px;">
+            <h2 style="color: #7ED957; font-size: 1.8rem; margin-bottom: 18px;">5. Data Security</h2>
+            <p>
+                We implement appropriate technical and organizational measures to protect your personal data. 
+                However, no method of transmission over the internet is completely secure.
+            </p>
+        
+        <!-- In-article Ad - Hidden if no_ads: true -->
+        
+      
+        
+        </section>
+
+        <section style="margin-bottom: 45px;">
+            <h2 style="color: #7ED957; font-size: 1.8rem; margin-bottom: 18px;">6. Your Rights</h2>
+            <p>You have the right to access, correct, or request deletion of your personal data. Feel free to contact us anytime.</p>
+        
+        <!-- In-article Ad - Hidden if no_ads: true -->
+        
+      
+        
+        </section>
+
+    </div>
+
+    <div style="text-align: center; margin-top: 60px; background: rgba(126, 217, 87, 0.1); padding: 35px; border-radius: 12px; border: 1px solid rgba(126, 217, 87, 0.2);">
+        <h3 style="margin-top: 0; font-size: 1.45rem; color: #FFDE59;">Questions or Concerns?</h3>
+        <p style="color: #cbd5e1; margin-bottom: 25px;">If you have any questions about this Privacy Policy, please don't hesitate to reach out.</p>
+        
+        <!-- In-article Ad - Hidden if no_ads: true -->
+        
+      
+        
+        <a href="mailto:flutpulse@proton.me" style="background: linear-gradient(90deg, #7ED957, #FFDE59); color: #1a202c; padding: 14px 34px; font-weight: bold; border-radius: 30px; text-decoration: none; display: inline-block;">
+            Contact Us
+        </a>
+    </div>
+
+</div>
+</p>
+        
+        <!-- In-article Ad - Hidden if no_ads: true -->
+        
+      
+    </div>
+
+  </div>
+
+
+
+<!-- Bottom Ad - Hidden on Home + pages with no_ads: true -->
+
+
+<script>
+     (window.adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+
+<footer>
+  <p>© 2026 FlutPulse. All rights reserved.</p>
+  <p>
+    <a href="https://www.facebook.com/flutpulse">Facebook</a> |
+    <a href="mailto:flutpulse@proton.me">Contact</a>
+  </p>
+</footer>
+
+</body>
+</html>

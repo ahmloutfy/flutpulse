@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Home | FlutPulse</title>
+  <style>
+    /* Global Styles */
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #0b0f14;
+      color: #fff;
+    }
+
+    /* Shared Navbar */
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 15px 30px;
+      border-bottom: 1px solid #222;
+    }
+    nav img { height: 60px; }
+    nav a {
+      color: #ccc;
+      margin-left: 20px;
+      text-decoration: none;
+      font-weight: 500;
+      position: relative;
+      transition: 0.3s;
+    }
+    nav a:hover { color: #6cff6c; }
+    nav a::after {
+      content: "";
+      position: absolute;
+      width: 0;
+      height: 2px;
+      bottom: -4px;
+      left: 0;
+      background: linear-gradient(90deg, #6cff6c, #ffd84d);
+      transition: 0.3s;
+    }
+    nav a:hover::after { width: 100%; }
+
+    /* ==================================================== */
+    /* 1. Home Page Styles (Hero & Grid)                    */
+    /* ==================================================== */
+    .hero {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 60px 30px;
+      gap: 40px;
+      flex-wrap: wrap;
+    }
+    .hero-text { flex: 1; min-width: 300px; margin-left: 80px; }
+    .hero-logo { flex: 1; text-align: center; }
+    .hero-logo img { width: 320px; max-width: 100%; filter: drop-shadow(0 0 20px #6cff6c); }
+    .hero h1 { font-size: 42px; }
+    .hero span { background: linear-gradient(90deg, #6cff6c, #ffd84d); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+    .hero p { color: #aaa; }
+
+    .container { padding: 30px; }
+    
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 20px;
+      align-items: stretch;
+    }
+    .card {
+      background: #121821;
+      border-radius: 12px;
+      overflow: hidden;
+      transition: 0.3s;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+      display: flex;
+      flex-direction: column;
+    }
+    .card:hover { transform: translateY(-6px); }
+    .card-img { width: 100%; height: 180px; object-fit: cover; display: block; }
+    
+    .card h3 { margin: 15px 15px 5px 15px; }
+    .card p { 
+      margin: 0 15px 15px 15px; 
+      flex-grow: 1;
+    }
+    
+    .card .btn { 
+      margin: auto 15px 15px 15px;
+    }
+
+    .btn { padding: 10px 20px; margin-top: 10px; display: inline-block; border-radius: 6px; text-decoration: none; }
+    .btn-primary { background: linear-gradient(90deg, #6cff6c, #ffd84d); color: #000; }
+    .btn-secondary { border: 1px solid #6cff6c; color: #6cff6c; }
+
+    /* Category Buttons */
+    .categories-container, [class*="categories"] {
+      display: flex !important;
+      justify-content: center;
+      gap: 15px;
+      flex-wrap: wrap;
+      margin: 20px auto;
+      padding: 10px;
+    }
+
+    .categories-container a, [class*="categories"] a {
+      display: inline-block !important;
+      background: #121821 !important;
+      color: #fff !important;
+      padding: 10px 20px !important;
+      border-radius: 8px !important;
+      text-decoration: none !important;
+      font-weight: bold !important;
+      border: 1px solid #222 !important;
+      transition: 0.3s ease !important;
+      white-space: nowrap !important;
+    }
+
+    .categories-container a:hover, [class*="categories"] a:hover {
+      border-color: #6cff6c !important;
+      color: #6cff6c !important;
+      transform: translateY(-3px) !important;
+      box-shadow: 0 5px 15px rgba(108, 255, 108, 0.2) !important;
+    }
+
+    /* Article Page Styles */
+    .article-layout-wrapper {
+      display: block;
+      max-width: 800px;
+      margin: 50px auto;
+      padding: 0 20px;
+      box-sizing: border-box;
+    }
+
+    .article-image-box {
+      text-align: center;
+      margin-bottom: 40px;
+      width: 100%;
+    }
+
+    .article-central-img {
+      max-width: 100%;
+      height: auto;
+      max-height: 400px;
+      object-fit: contain;
+      border-radius: 12px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+    }
+
+    .article-main-content > h1:first-of-type {
+      font-size: 38px;
+      color: #fff;
+      margin: 20px auto 25px auto;
+      display: inline-flex !important;
+      align-items: center;
+      justify-content: center;
+      white-space: normal !important;
+      word-wrap: break-word !important;
+      gap: 12px;
+      width: auto;
+      text-align: center;
+    }
+
+    @media (max-width: 600px) {
+      .article-main-content > h1:first-of-type {
+        font-size: 26px;
+        white-space: normal !important;
+      }
+    }
+
+    .article-main-content {
+      font-size: 18px;
+      line-height: 1.8;
+      color: #e0e0e0;
+      text-align: left;
+    }
+
+    pre {
+      background: #080c11;
+      padding: 20px;
+      border-radius: 10px;
+      overflow-x: auto;
+      border: 1px solid #1e2733;
+    }
+    code {
+      color: #ffd84d;
+      font-family: 'Consolas', monospace;
+    }
+
+    /* Footer */
+    footer { background: #05080c; padding: 30px; text-align: center; color: #aaa; margin-top: 60px; }
+    footer a { color: #6cff6c; text-decoration: none; }
+  </style>
+
+  <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-9Z6X50N6PL"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-9Z6X50N6PL');
+</script>
+  
+</head>
+<body>
+
+<nav>
+  <img src="/flutpulse_logo.png" 
+       alt="FlutPulse Logo" 
+       style="height: 80px;"> 
+  <div>
+    <a href="/">Home</a>
+    <a href="#">Articles</a>
+    <a href="#">Categories</a>
+    <a href="/about/">About</a>
+    <a href="/privacy_policy/">Privacy Policy</a>
+    <a href="#">Contact</a>
+  </div>
+</nav>
+
+
+  
+  <section class="hero">
+  <div class="hero-text">
+    <h1>Solve. Learn. <span>Build.</span></h1>
+    <p>Fix Flutter issues with clear, practical solutions.</p>
+    <a href="#" class="btn btn-primary">Browse Articles</a>
+    <a href="#" class="btn btn-secondary">Explore Categories</a>
+  </div>
+  <div class="hero-logo">
+    <img src="flutpulse_logo.png" alt="FlutPulse" />
+  </div>
+</section>
+
+<div style="text-align: center; margin: 30px auto; max-width: 100%; padding: 0 15px; box-sizing: border-box;">
+  <div style="background: #121821; padding: 15px; border-radius: 8px; border: 1px dashed #263345; display: inline-block; width: 100%; max-width: 760px; box-sizing: border-box; position: relative; overflow: hidden;">
+    <span style="color: #444; font-size: 11px; display: block; margin-bottom: 8px;">Advertisement</span>
+    
+    <div style="width: 100%; max-width: 728px; height: 90px; margin: 0 auto; position: relative; display: flex; align-items: center; justify-content: space-between; background: #080c11; border-radius: 4px; padding: 0 20px; box-sizing: border-box;">
+      
+      <div style="display: flex; align-items: center; gap: 12px; text-align: left;">
+        <div style="font-size: 24px;">📈</div>
+        <div>
+          <div style="color: #6cff6c; font-family: monospace; font-size: 13px; font-weight: bold; letter-spacing: 0.5px;">FLUTPULSE PREMIUM LEADERBOARD</div>
+          <div style="color: #666; font-size: 11px; margin-top: 2px;">Top performing horizontal placement for maximum developer engagement.</div>
+        </div>
+      </div>
+      <div style="background: linear-gradient(90deg, #ffd84d, #6cff6c); color: #000; font-size: 10px; font-weight: bold; padding: 6px 12px; border-radius: 4px; text-transform: uppercase; white-space: nowrap;">Join Us</div>
+
+      <ins class="adsbygoogle" style="display: inline-block; width: 728px; height: 90px; position: absolute; top: 0; left: 0; z-index: 10;" data-ad-client="ca-pub-XXXXXXXXXXXXXXXX" data-ad-slot="TOP_HOME_SLOT"></ins>
+    </div>
+  </div>
+</div>
+
+<div class="container" style="text-align: center;">
+  <h2>Latest Articles</h2>
+  <div class="grid">
+    
+    <div class="card">
+      
+        <img src="/images/articles/mastering-white-space-flutter-ui.png" class="card-img" alt="The Power of Nothing: Mastering White Space in Flutter UI Design" />
+      
+      <h3>The Power of Nothing: Mastering White Space in Flutter UI Design</h3>
+      <p>White space is the structural framework that gives Flutter interfaces clarity, rhythm, and a premium feel. Learn how to engineer it deliberately.</p>
+      <a href="/articles/mastering-white-space-flutter-ui.html" class="btn btn-primary">Read More</a>
+    </div>
+    
+    <div class="card">
+      
+        <img src="/images/articles/conquering-the-lifecycle.jpg" class="card-img" alt="Conquering the Lifecycle: Why setState Belongs Outside Your Building Blocks 🎯" />
+      
+      <h3>Conquering the Lifecycle: Why setState Belongs Outside Your Building Blocks 🎯</h3>
+      <p>Flutter's declarative nature is powerful, but mixing UI with business logic creates a brittle app. Learn why inline state management degrades performance and how to decouple it properly...</p>
+      <a href="/articles/why-setstate-belongs-outside-ui.html" class="btn btn-primary">Read More</a>
+    </div>
+    
+    <div class="card">
+      
+        <img src="/images/articles/why-api-freeze.jpg" class="card-img" alt="Why your API calls freeze your Flutter UI 🚫" />
+      
+      <h3>Why your API calls freeze your Flutter UI 🚫</h3>
+      <p>One of the most frustrating issues in Flutter is when your app suddenly feels stuck... Learn why your app freezes and how to fix it properly...</p>
+      <a href="/articles/why-api-freeze.html" class="btn btn-primary">Read More</a>
+    </div>
+    
+  </div>
+</div>
+
+<div class="container" style="text-align: center;">
+  <h2>Categories</h2>
+  <div class="categories-container">
+    <a href="#" class="category-btn">Flutter</a>
+    <a href="#" class="category-btn">Dart</a>
+    <a href="#" class="category-btn">Android</a>
+    <a href="#" class="category-btn">Error Fixes</a>
+  </div>
+</div>
+
+<div class="container" style="text-align: center; margin-top: 40px;">
+  <h2>About FlutPulse</h2>
+  <p style="max-width: 600px; margin: 0 auto; color: #aaa; line-height: 1.6;">
+    FlutPulse is a technical blog focused on solving real-world Flutter problems 
+    with clear, practical, and developer-friendly solutions.
+  </p>
+</div>
+
+<div style="text-align: center; margin: 40px auto 20px auto; max-width: 100%; padding: 0 15px; box-sizing: border-box;">
+  <div style="background: #121821; padding: 15px; border-radius: 8px; border: 1px dashed #263345; display: inline-block; width: 100%; max-width: 760px; box-sizing: border-box; position: relative; overflow: hidden;">
+    <span style="color: #444; font-size: 11px; display: block; margin-bottom: 8px;">Advertisement</span>
+    
+    <div style="width: 100%; max-width: 728px; height: 90px; margin: 0 auto; position: relative; display: flex; align-items: center; justify-content: space-between; background: #080c11; border-radius: 4px; padding: 0 20px; box-sizing: border-box;">
+      
+      <div style="display: flex; align-items: center; gap: 12px; text-align: left;">
+        <div style="font-size: 24px;">📊</div>
+        <div>
+          <div style="color: #6cff6c; font-family: monospace; font-size: 13px; font-weight: bold; letter-spacing: 0.5px;">FLUTPULSE BOTTOM AD UNIT</div>
+          <div style="color: #666; font-size: 11px; margin-top: 2px;">Ready for final Google AdSense integration.</div>
+        </div>
+      </div>
+      <div style="background: linear-gradient(90deg, #ffd84d, #6cff6c); color: #000; font-size: 10px; font-weight: bold; padding: 6px 12px; border-radius: 4px; text-transform: uppercase; white-space: nowrap;">Explore</div>
+
+      <ins class="adsbygoogle" style="display: inline-block; width: 728px; height: 90px; position: absolute; top: 0; left: 0; z-index: 10;" data-ad-client="ca-pub-XXXXXXXXXXXXXXXX" data-ad-slot="BOTTOM_HOME_SLOT"></ins>
+    </div>
+  </div>
+</div>
+
+
+
+
+<!-- Bottom Ad - Hidden on Home + pages with no_ads: true -->
+
+
+<script>
+     (window.adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+
+<footer>
+  <p>© 2026 FlutPulse. All rights reserved.</p>
+  <p>
+    <a href="https://www.facebook.com/flutpulse">Facebook</a> |
+    <a href="mailto:flutpulse@proton.me">Contact</a>
+  </p>
+</footer>
+
+</body>
+</html>

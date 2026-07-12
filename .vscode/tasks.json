@@ -15,17 +15,18 @@
       "command": "C:\\Ruby33-x64\\bin\\bundle.bat exec jekyll serve --livereload --host 127.0.0.1 --port 4000",
       "isBackground": true,
       "problemMatcher": {
-        "owner": "jekyll",
         "pattern": [
           {
-            "regexp": "^(.*)$",
-            "message": 1
+            "regexp": ".",
+            "file": 1,
+            "location": 2,
+            "message": 3
           }
         ],
         "background": {
           "activeOnStart": true,
           "beginsPattern": "Configuration file:",
-          "endsPattern": "Server running"
+          "endsPattern": "Server running..."
         }
       }
     }
