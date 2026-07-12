@@ -1,0 +1,14 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "type": "pwa-chrome",
+            "request": "launch",
+            "name": "Run FlutPulse in Chrome",
+            "preLaunchTask": "Serve FlutPulse",
+            "url": "http://127.0.0.1:4000",
+            "webRoot": "${workspaceFolder}",
+            "runtimeExecutable": "C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe"
+        }
+    ]
+}

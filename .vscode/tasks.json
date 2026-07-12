@@ -1,0 +1,33 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "Install Jekyll dependencies",
+      "type": "shell",
+      "command": "C:\\Ruby33-x64\\bin\\bundle.bat install",
+      "problemMatcher": []
+    },
+    {
+      "label": "Serve FlutPulse",
+      "type": "shell",
+      "dependsOn": "Install Jekyll dependencies",
+      "dependsOrder": "sequence",
+      "command": "C:\\Ruby33-x64\\bin\\bundle.bat exec jekyll serve --livereload --host 127.0.0.1 --port 4000",
+      "isBackground": true,
+      "problemMatcher": {
+        "owner": "jekyll",
+        "pattern": [
+          {
+            "regexp": "^(.*)$",
+            "message": 1
+          }
+        ],
+        "background": {
+          "activeOnStart": true,
+          "beginsPattern": "Configuration file:",
+          "endsPattern": "Server running"
+        }
+      }
+    }
+  ]
+}
