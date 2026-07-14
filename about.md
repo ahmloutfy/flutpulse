@@ -80,22 +80,19 @@ no_ads: true
         </p>
     </section>
 
-    <div style="text-align:center; margin-top:50px; background:rgba(126,217,87,.1); padding:30px; border-radius:12px; border:1px solid rgba(126,217,87,.2);">
+    <div style="text-align: center; margin-top: 50px; background: rgba(126, 217, 87, 0.1); padding: 30px; border-radius: 12px; border: 1px solid rgba(126, 217, 87, 0.2);">
+    <h3 style="margin-top: 0; font-size: 1.4rem; color: #FFDE59;">
+        Ready to solve your next Flutter challenge?
+    </h3>
 
-        <h3 style="margin-top:0; font-size:1.4rem; color:#FFDE59;">
-            Ready to build your next Flutter app?
-        </h3>
+    <p style="color: #cbd5e1; margin-bottom: 20px; line-height: 1.7; max-width: 560px; margin-left: auto; margin-right: auto;">
+        Explore practical tutorials, real-world fixes, and production-ready techniques designed to help Flutter developers build faster and ship with confidence.
+    </p>
 
-        <p style="color:#cbd5e1; margin-bottom:24px;">
-            Browse the component library, discover implementation ideas,
-            and speed up your development workflow.
-        </p>
-
-        <a href="{{ '/' | relative_url }}"
-           style="background:#7ED957; color:#1a202c; padding:12px 28px; font-weight:600; border-radius:30px; text-decoration:none; display:inline-block;">
-            Browse Components →
-        </a>
-
-    </div>
+    <a href="{{ '/' | relative_url }}"
+       style="background: linear-gradient(90deg, #7ED957, #FFDE59); color: #1a202c; padding: 12px 28px; font-weight: bold; border-radius: 30px; text-decoration: none; display: inline-block; transition: 0.3s;">
+        Browse Articles →
+    </a>
+</div>
 
 </div>
