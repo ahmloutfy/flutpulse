@@ -15,9 +15,6 @@ no_ads: true
         <h1 style="font-size: 2.5rem; font-weight: 700; margin-bottom: 10px;">
             Privacy <span style="color: #FFDE59;">Policy</span>
         </h1>
-        <p style="font-size: 1.1rem; color: #a0aec0; max-width: 600px; margin: 0 auto; line-height: 1.6;">
-            Last updated: June 22, 2026
-        </p>
     </div>
 
     <hr style="border: 0; height: 1px; background: linear-gradient(to right, transparent, #7ED957, transparent); margin: 40px 0;">
