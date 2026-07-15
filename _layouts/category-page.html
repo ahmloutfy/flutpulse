@@ -1,0 +1,32 @@
+---
+layout: default
+---
+
+<div class="category-page-wrapper">
+  <!-- عرض اسم الفئة الحالية بشكل ديناميكي من خلال الإضافة -->
+  <h1 class="category-main-title" style="text-transform: capitalize;">📁 Category: {{ page.title }}</h1>
+
+  <div class="category-block">
+    <h2 class="category-header">
+      <span>Articles</span>
+      <span class="category-count">
+        {{ page.posts | size }} {% if page.posts | size == 1 %}Article{% else %}Articles{% endif %}
+      </span>
+    </h2>
+    
+    <!-- عرض مقالات هذه الفئة المحددة فقط في قائمة روابط نظيفة -->
+    <div class="category-links-list">
+      {% for post in page.posts %}
+        <a href="{{ post.url | relative_url }}" class="category-article-item">
+          <span class="article-item-title">📄 {{ post.title }}</span>
+          <span class="article-item-date">{{ post.date | date: "%b %d, %Y" }} →</span>
+        </a>
+      {% endfor %}
+    </div>
+  </div>
+
+  <!-- زر عودة سريع متناسق مع التصميم -->
+  <div style="text-align: center; margin-top: 30px;">
+    <a href="{{ site.baseurl }}/" class="btn btn-secondary">← Back to Home</a>
+  </div>
+</div>
