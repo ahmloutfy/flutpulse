@@ -58,12 +58,13 @@ title: Home
   <h2>Categories</h2>
   <div class="categories-container">
     {% for category in site.categories %}
-<a href="{{ site.baseurl }}/categories/{{ category | first | slugify }}/" class="category-btn">
+    <a href="{{ site.baseurl }}/categories/#{{ category | first | slugify }}" class="category-btn">
       {{ category | first }}
     </a>
     {% endfor %}
   </div>
 </div>
+
 
 
 
