@@ -12,7 +12,7 @@ permalink: /categories/
   <style>
     body {
       margin: 0;
-      font-family: Arial, sans-serif;
+      font-family: 'Segoe UI', Arial, sans-serif;
       background: #0b0f14;
       color: #fff;
       padding: 0;
@@ -145,8 +145,27 @@ permalink: /categories/
       <div class="category-links-list">
         {% for post in category | last %}
           <a href="{{ post.url | relative_url }}" class="category-article-item">
-            <span class="article-item-title">📄 {{ post.title }}</span>
-            <span class="article-item-date">{{ post.date | date: "%b %d, %Y" }} →</span>
+            
+            <!-- محاولة جلب عنوان المقال بـ 3 طرق مختلفة لضمان القراءة بالقوة -->
+            <span class="article-item-title">
+              📄 
+              {% if post.title and post.title != "" %}
+                {{ post.title }}
+              {% elsif post.slug and post.slug != "" %}
+                {{ post.slug | replace: "-", " " | capitalize }}
+              {% else %}
+                View Published Article
+              {% endif %}
+            </span>
+            
+            <!-- عرض تاريخ النشر أو سهم الانتقال الصريح -->
+            <span class="article-item-date">
+              {% if post.date %}
+                {{ post.date | date: "%b %d, %Y" }}
+              {% endif %}
+              <span style="color: #6cff6c; margin-left: 8px;">Read →</span>
+            </span>
+
           </a>
         {% endfor %}
       </div>
