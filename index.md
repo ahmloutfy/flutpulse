@@ -57,12 +57,15 @@ title: Home
 <div class="container" style="text-align: center;">
   <h2>Categories</h2>
   <div class="categories-container">
-    <a href="#" class="category-btn">Flutter</a>
-    <a href="#" class="category-btn">Dart</a>
-    <a href="#" class="category-btn">Android</a>
-    <a href="#" class="category-btn">Error Fixes</a>
+    {% for category in site.categories %}
+    <a href="{{ site.baseurl }}/categories/#{{ category | first | slugify }}" class="category-btn">
+      {{ category | first }}
+    </a>
+    {% endfor %}
   </div>
 </div>
+
+
 
 <div class="container" style="text-align: center; margin-top: 40px;">
   <h2>About FlutPulse</h2>
