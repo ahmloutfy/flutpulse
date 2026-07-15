@@ -8,6 +8,7 @@ permalink: /categories/
   <h1 class="category-main-title">Articles by Category</h1>
 
   {% for category in site.categories %}
+    <!-- كل فئة تأخذ بلوك مستقل تماماً مع ID مخصص للهاش -->
     <div class="category-block" id="{{ category | first | slugify }}">
       
       <h2 class="category-header">
