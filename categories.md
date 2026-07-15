@@ -4,7 +4,6 @@ title: Categories
 permalink: /categories/
 ---
 
-<!-- ستايل داخلي معزول ومحمي لحل مشكلة اختفاء النصوص -->
 <style>
   .custom-category-wrapper {
     max-width: 800px;
@@ -19,6 +18,7 @@ permalink: /categories/
     margin-bottom: 40px;
     font-size: 32px;
     font-weight: bold;
+    border: none !important;
   }
   .custom-category-block {
     background: #121821 !important;
@@ -37,6 +37,9 @@ permalink: /categories/
     display: flex !important;
     justify-content: space-between !important;
     align-items: center !important;
+    border-top: none !important;
+    border-left: none !important;
+    border-right: none !important;
   }
   .custom-category-count {
     color: #888888 !important;
@@ -86,24 +89,28 @@ permalink: /categories/
   <h1 class="custom-category-title">Articles by Category</h1>
 
   {% for category in site.categories %}
-    <div class="custom-category-block" id="{{ category | first | slugify }}">
+    {% assign category_name = category | first %}
+    
+    <div class="custom-category-block" id="{{ category_name | slugify }}">
       
       <h2 class="custom-category-header">
-        <span>📁 {{ category | first }}</span>
+        <span>📁 {{ category_name }}</span>
         <span class="custom-category-count">
           {{ category | last | size }} {% if category | last | size == 1 %}Article{% else %}Articles{% endif %}
         </span>
       </h2>
       
       <div class="custom-links-list">
-        {% for post in category | last %}
-          <a href="{{ post.url | relative_url }}" class="custom-article-item">
-            <span class="custom-item-title">📄 {{ post.title }}</span>
-            <span class="custom-item-date">
-              {{ post.date | date: "%b %d, %Y" }} 
-              <span style="color: #6cff6c !important; margin-left: 8px;">→</span>
-            </span>
-          </a>
+        {% for post in site.posts %}
+          {% if post.categories contains category_name %}
+            <a href="{{ post.url | relative_url }}" class="custom-article-item">
+              <span class="custom-item-title">📄 {{ post.title }}</span>
+              <span class="custom-item-date">
+                {{ post.date | date: "%b %d, %Y" }} 
+                <span style="color: #6cff6c !important; margin-left: 8px;">→</span>
+              </span>
+            </a>
+          {% endif %}
         {% endfor %}
       </div>
 
