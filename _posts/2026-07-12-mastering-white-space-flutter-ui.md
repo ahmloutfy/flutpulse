@@ -54,4 +54,4 @@ Achieving perfect pixel harmony across different device sizes can be tedious if 
 
 Instead of hardcoding random padding values, FlutFest utilizes a centralized theme helper and standardized layout wrappers. Whether it is the internal spacing of the `EventCard` or the sweeping margins of the `HomeScreen`, the spacing architecture is pre-calculated. Every component is designed to "breathe" automatically, ensuring that your application maintains a premium, spacious feel right out of the box, saving you countless hours of UI tweaking.
 
-✨ **Experience the balanced design live:** 👉 [https://your-live-demo-link.web.app](https://your-live-demo-link.web.app)
+✨ **Experience the balanced design live:** 👉 [https://ahmloutfy.github.io/FlutFestDemo/](https://ahmloutfy.github.io/FlutFestDemo/)

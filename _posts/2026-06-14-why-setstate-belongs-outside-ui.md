@@ -49,5 +49,5 @@ Instead of cluttering your views with logic, FlutFest utilizes structured bindin
 
 The UI simply consumes data provided by dedicated controllers, preventing active build errors entirely and guaranteeing a fluid, highly responsive user experience across your entire product. 💎
 
-✨ **Experience the fluid performance of a detached architecture live:** 👉 [https://flutfest.netlify.app/
-](https://flutfest.netlify.app/)
+✨ **Experience the fluid performance of a detached architecture live:** 👉 [https://ahmloutfy.github.io/FlutFestDemo/
+](https://ahmloutfy.github.io/FlutFestDemo/)
