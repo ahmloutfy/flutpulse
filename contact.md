@@ -25,7 +25,7 @@ no_ads: true
 
   <div style="background: #121821; border: 1px solid #263345; border-radius: 12px; padding: 24px;">
     <form id="contact-form"
-          action="{{ form_action }}"
+          {% if form_ready %}action="{{ form_action }}"{% endif %}
           method="POST"
           style="display: grid; gap: 16px;">
       <input type="hidden" name="_subject" value="New Contact Message - FlutPulse">
@@ -89,6 +89,15 @@ no_ads: true
           window.location.href = "{{ '/contact/thanks/' | relative_url }}";
           return;
         }
+        let errorMessage = 'Message could not be sent right now. Please try again later or email flutpulse@proton.me.';
+        try {
+          const data = await response.json();
+          if (data && data.errors && data.errors.length > 0 && data.errors[0].message) {
+            errorMessage = data.errors[0].message;
+          }
+        } catch (parseError) {}
+        alert(errorMessage);
+        return;
       } catch (error) {
         console.error(error);
       }
