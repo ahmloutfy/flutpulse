@@ -6,6 +6,7 @@ no_ads: true
 ---
 
 <div class="about-container" style="max-width: 800px; margin: 0 auto; padding: 40px 20px; font-family: 'Poppins', sans-serif; color: #ffffff;">
+  {% assign form_action = site.formspree_endpoint | default: "https://formspree.io/f/your-form-id" %}
   <div style="text-align: center; margin-bottom: 30px;">
     <img src="{{ '/flutpulse_logo.png' | relative_url }}"
          alt="FlutPulse Logo"
@@ -19,7 +20,7 @@ no_ads: true
   </div>
 
   <div style="background: #121821; border: 1px solid #263345; border-radius: 12px; padding: 24px;">
-    <form action="https://formspree.io/f/your-form-id"
+    <form action="{{ form_action }}"
           method="POST"
           style="display: grid; gap: 16px;">
       <input type="hidden" name="_subject" value="New Contact Message - FlutPulse">
@@ -53,8 +54,14 @@ no_ads: true
     </form>
   </div>
 
-  <p style="text-align: center; margin-top: 16px; color: #9ca9bb; font-size: 0.95rem;">
-    To activate this form, replace <code style="color:#FFDE59;">your-form-id</code> with your Formspree form ID.
+  {% if form_action contains "your-form-id" %}
+    <p style="text-align: center; margin-top: 16px; color: #9ca9bb; font-size: 0.95rem;">
+      To activate this form, update <code style="color:#FFDE59;">formspree_endpoint</code> in
+      <code style="color:#FFDE59;">_config.yml</code> with your Formspree form URL.
+    </p>
+  {% endif %}
+
+  <p style="text-align: center; margin-top: 10px; color: #9ca9bb; font-size: 0.95rem;">
     You can also email us directly at <a href="mailto:flutpulse@proton.me" style="color:#7ED957;">flutpulse@proton.me</a>.
   </p>
 </div>

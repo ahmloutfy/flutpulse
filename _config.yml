@@ -12,3 +12,5 @@ jekyll-archives:
   layout: category-page
   permalinks:
     category: /categories/:name/
+
+formspree_endpoint: "https://formspree.io/f/your-form-id"
