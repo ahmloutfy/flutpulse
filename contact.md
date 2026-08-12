@@ -100,6 +100,8 @@ no_ads: true
         return;
       } catch (error) {
         console.error(error);
+        alert('Message could not be sent right now. Please try again later or email flutpulse@proton.me.');
+        return;
       }
       alert('Message could not be sent right now. Please try again later or email flutpulse@proton.me.');
     });
