@@ -95,7 +95,9 @@ no_ads: true
           if (data && data.errors && data.errors.length > 0 && data.errors[0].message) {
             errorMessage = data.errors[0].message;
           }
-        } catch (parseError) {}
+        } catch (parseError) {
+          console.warn(parseError);
+        }
         alert(errorMessage);
         return;
       } catch (error) {
@@ -103,7 +105,6 @@ no_ads: true
         alert('Message could not be sent right now. Please try again later or email flutpulse@proton.me.');
         return;
       }
-      alert('Message could not be sent right now. Please try again later or email flutpulse@proton.me.');
     });
   })();
 </script>
