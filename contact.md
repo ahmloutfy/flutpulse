@@ -62,7 +62,7 @@ no_ads: true
   {% unless form_ready %}
     <p style="text-align: center; margin-top: 16px; color: #9ca9bb; font-size: 0.95rem;">
       To activate this form, update <code style="color:#FFDE59;">formspree_endpoint</code> in
-      <code style="color:#FFDE59;">/home/runner/work/flutpulse/flutpulse/_config.yml</code> with your Formspree form URL.
+      <code style="color:#FFDE59;">_config.yml</code> with your Formspree form URL.
     </p>
   {% endunless %}
 
@@ -89,7 +89,9 @@ no_ads: true
           window.location.href = "{{ '/contact/thanks/' | relative_url }}";
           return;
         }
-      } catch (error) {}
+      } catch (error) {
+        console.error(error);
+      }
       alert('Message could not be sent right now. Please try again later or email flutpulse@proton.me.');
     });
   })();
