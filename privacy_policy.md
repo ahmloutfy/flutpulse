@@ -45,6 +45,7 @@ no_ads: true
             <ul style="padding-left: 25px; line-height: 1.8;">
                 <li>Provide, maintain, and improve our services</li>
                 <li>Respond to your inquiries and provide support</li>
+                <li>Use contact form submissions only to reply to your message and follow up on your request</li>
                 <li>Understand how users interact with our content</li>
                 <li>Comply with legal obligations</li>
             </ul>
