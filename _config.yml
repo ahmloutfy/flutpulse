@@ -14,3 +14,4 @@ jekyll-archives:
     category: /categories/:name/
 
 formspree_endpoint: ""
+future: false
