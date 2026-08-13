@@ -59,12 +59,14 @@ no_ads: true
     </form>
   </div>
 
+  {% comment %}
   {% unless form_ready %}
     <p style="text-align: center; margin-top: 16px; color: #9ca9bb; font-size: 0.95rem;">
       To activate this form, update <code style="color:#FFDE59;">formspree_endpoint</code> in
       <code style="color:#FFDE59;">_config.yml</code> with your Formspree form URL.
     </p>
   {% endunless %}
+  {% endcomment %}
 
   <p style="text-align: center; margin-top: 10px; color: #9ca9bb; font-size: 0.95rem;">
     You can also email us directly at <a href="mailto:flutpulse@proton.me" style="color:#7ED957;">flutpulse@proton.me</a>.
