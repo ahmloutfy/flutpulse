@@ -45,10 +45,44 @@
     }
     nav a:hover::after { width: 100%; }
 
-    @media (max-width: 600px) {
-      nav { padding: 10px 12px; }
+    /* Hamburger button */
+    .nav-toggle {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 4px;
+    }
+    .nav-toggle span {
+      display: block;
+      width: 24px;
+      height: 2px;
+      background: #ccc;
+      border-radius: 2px;
+      transition: 0.3s;
+    }
+
+    @media (max-width: 768px) {
+      nav { padding: 12px 16px; position: relative; flex-wrap: wrap; }
       nav img { height: 54px; }
-      nav a { font-size: 0.78rem; margin-left: 10px; }
+      .nav-toggle { display: flex; }
+      .nav-links {
+        display: none;
+        flex-direction: column;
+        width: 100%;
+        padding: 8px 0 4px;
+        gap: 0;
+      }
+      .nav-links.open { display: flex; }
+      .nav-links a {
+        margin-left: 0;
+        padding: 10px 4px;
+        border-top: 1px solid #1e2530;
+        font-size: 0.95rem;
+      }
+      .nav-links a::after { display: none; }
     }
 
     /* ==================================================== */
@@ -265,18 +299,22 @@
 <body>
 
 <nav>
-  <img src="{{ '/flutpulse_logo.png' | relative_url }}" 
-       alt="FlutPulse Logo" 
-       loading="eager"
-       decoding="async"
-       style="height: 80px;"> 
-  <div>
+  <a href="{{ site.baseurl }}/" style="display:flex;align-items:center;text-decoration:none;margin-left:0;">
+    <img src="{{ '/flutpulse_logo.png' | relative_url }}" 
+         alt="FlutPulse Logo" 
+         loading="eager"
+         decoding="async"
+         style="height: 80px;">
+  </a>
+  <button class="nav-toggle" aria-label="Toggle navigation" onclick="document.querySelector('.nav-links').classList.toggle('open')">
+    <span></span><span></span><span></span>
+  </button>
+  <div class="nav-links">
     <a href="{{ site.baseurl }}/">Home</a>
     <a href="{{ '/#latest-articles' | relative_url }}">Articles</a>
     <a href="{{ site.baseurl }}/categories/">Categories</a>
     <a href="{{ site.baseurl }}/about/">About</a>
     <a href="{{ site.baseurl }}/contact/">Contact</a>
-    <a href="{{ site.baseurl }}/privacy_policy/">Privacy Policy</a>
   </div>
 </nav>
 
