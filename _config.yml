@@ -13,5 +13,5 @@ jekyll-archives:
   permalinks:
     category: /categories/:name/
 
-formspree_endpoint: ""
+formspree_endpoint: "https://formspree.io/f/xdenlvqd"
 future: false
