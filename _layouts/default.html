@@ -4,6 +4,8 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>{{ page.title }} | FlutPulse</title>
+  <meta name="description" content="{% if page.excerpt %}{{ page.excerpt | strip_html | strip_newlines | truncate: 155 }}{% else %}{{ site.description }}{% endif %}">
+  <link rel="canonical" href="{{ page.url | absolute_url }}">
   <style>
     /* Global Styles */
     body {
@@ -42,6 +44,46 @@
       transition: 0.3s;
     }
     nav a:hover::after { width: 100%; }
+
+    /* Hamburger button */
+    .nav-toggle {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 4px;
+    }
+    .nav-toggle span {
+      display: block;
+      width: 24px;
+      height: 2px;
+      background: #ccc;
+      border-radius: 2px;
+      transition: 0.3s;
+    }
+
+    @media (max-width: 768px) {
+      nav { padding: 12px 16px; position: relative; flex-wrap: wrap; }
+      nav img { height: 54px; }
+      .nav-toggle { display: flex; }
+      .nav-links {
+        display: none;
+        flex-direction: column;
+        width: 100%;
+        padding: 8px 0 4px;
+        gap: 0;
+      }
+      .nav-links.open { display: flex; }
+      .nav-links a {
+        margin-left: 0;
+        padding: 10px 4px;
+        border-top: 1px solid #1e2530;
+        font-size: 0.95rem;
+      }
+      .nav-links a::after { display: none; }
+    }
 
     /* ==================================================== */
     /* 1. Home Page Styles (Hero & Grid)                    */
@@ -203,20 +245,76 @@
 
   gtag('config', 'G-9Z6X50N6PL');
 </script>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "FlutPulse",
+  "url": "{{ '/' | absolute_url }}",
+  "logo": "{{ '/flutpulse_logo.png' | absolute_url }}"
+}
+</script>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "name": "FlutPulse",
+  "url": "{{ '/' | absolute_url }}",
+  "description": "{{ site.description }}"
+}
+</script>
+
+{% if page.date %}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": {{ page.title | jsonify }},
+  "datePublished": "{{ page.date | date_to_xmlschema }}",
+  "dateModified": "{% if page.last_modified_at %}{{ page.last_modified_at | date_to_xmlschema }}{% else %}{{ page.date | date_to_xmlschema }}{% endif %}",
+  "author": {
+    "@type": "Organization",
+    "name": "FlutPulse"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "FlutPulse",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "{{ '/flutpulse_logo.png' | absolute_url }}"
+    }
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "{{ page.url | absolute_url }}"
+  },
+  "image": {% if page.image %}{{ page.image | absolute_url | jsonify }}{% else %}{{ '/flutpulse_logo.png' | absolute_url | jsonify }}{% endif %}
+}
+</script>
+{% endif %}
   
 </head>
 <body>
 
 <nav>
-  <img src="{{ '/flutpulse_logo.png' | relative_url }}" 
-       alt="FlutPulse Logo" 
-       style="height: 80px;"> 
-  <div>
+  <a href="{{ site.baseurl }}/" style="display:flex;align-items:center;text-decoration:none;margin-left:0;">
+    <img src="{{ '/flutpulse_logo.png' | relative_url }}" 
+         alt="FlutPulse Logo" 
+         loading="eager"
+         decoding="async"
+         style="height: 80px;">
+  </a>
+  <button class="nav-toggle" aria-label="Toggle navigation" onclick="document.querySelector('.nav-links').classList.toggle('open')">
+    <span></span><span></span><span></span>
+  </button>
+  <div class="nav-links">
     <a href="{{ site.baseurl }}/">Home</a>
-    <a href="#">Articles</a>
+    <a href="{{ '/#latest-articles' | relative_url }}">Articles</a>
     <a href="{{ site.baseurl }}/categories/">Categories</a>
     <a href="{{ site.baseurl }}/about/">About</a>
-    <a href="{{ site.baseurl }}/privacy_policy/">Privacy Policy</a>
+    <a href="{{ site.baseurl }}/contact/">Contact</a>
   </div>
 </nav>
 
@@ -230,7 +328,7 @@
     
     {% if page.image %}
     <div class="article-image-box">
-      <img class="article-central-img" src="{{ page.image | relative_url }}" alt="{{ page.title }}">
+      <img class="article-central-img" src="{{ page.image | relative_url }}" alt="{{ page.title }}" loading="lazy" decoding="async">
     </div>
     {% endif %}
 
@@ -243,28 +341,54 @@
         {% if forloop.index == 2 and page.no_ads != true %}
           <div style="text-align: center; margin: 35px auto; max-width: 100%;">
             <span style="color: #444; font-size: 11px; display: block; margin-bottom: 6px;">Advertisement</span>
-            <div style="width: 100%; max-width: 650px; min-height: 120px; margin: 0 auto; position: relative; background: #121821; border-radius: 8px; border: 1px dashed #263345; display: flex; align-items: center; justify-content: space-between; box-sizing: border-box; padding: 15px 25px; overflow: hidden;">
-              
-              <div style="display: flex; align-items: center; gap: 15px; text-align: left;">
-                <div style="font-size: 28px;">🚀</div>
-                <div>
-                  <div style="color: #6cff6c; font-family: monospace; font-size: 14px; font-weight: bold;">IN-ARTICLE NATIVE AD</div>
-                  <div style="color: #888; font-size: 12px; margin-top: 3px;">Fluid responsive ad units blended smoothly within text content.</div>
-                </div>
-              </div>
-              <div style="background: linear-gradient(90deg, #6cff6c, #ffd84d); color: #000; font-size: 11px; font-weight: bold; padding: 8px 16px; border-radius: 4px; text-transform: uppercase; white-space: nowrap;">Try Now</div>
-
+            <div style="width: 100%; max-width: 650px; min-height: 120px; margin: 0 auto; position: relative; background: #121821; border-radius: 8px; border: 1px dashed #263345; box-sizing: border-box; overflow: hidden;">
               <ins class="adsbygoogle"
-                   style="display: block; width: 100%; height: 100%; position: absolute; top: 0; left: 0; z-index: 10;"
+                   style="display: block; width: 100%; min-height: 120px;"
                    data-ad-layout="in-article"
                    data-ad-format="fluid"
                    data-ad-client="ca-pub-XXXXXXXXXXXXXXXX"
                    data-ad-slot="MID_AD_SLOT"></ins>
+              <script>(window.adsbygoogle = window.adsbygoogle || []).push({});</script>
             </div>
           </div>
         {% endif %}
       {% endfor %}
     </div>
+
+    {% if page.date %}
+    {% assign first_category = page.categories | first %}
+    <section style="margin: 35px 0 0 0; border-top: 1px solid #1e2733; padding-top: 24px;">
+      <h2 style="margin: 0 0 15px 0; font-size: 24px;">Related Articles</h2>
+      <div style="display: grid; gap: 12px;">
+        {% assign related_count = 0 %}
+        {% for post in site.posts %}
+          {% if post.url != page.url and first_category and post.categories contains first_category and related_count < 3 %}
+            <a href="{{ post.url | relative_url }}" style="display: block; padding: 14px 16px; border-radius: 8px; background: #121821; border: 1px solid #1e2733; color: #fff; text-decoration: none;" data-track-cta="related_article" data-track-location="article_footer">
+              {{ post.title }}
+            </a>
+            {% assign related_count = related_count | plus: 1 %}
+          {% endif %}
+        {% endfor %}
+
+        {% if related_count == 0 %}
+          {% for post in site.posts %}
+            {% if post.url != page.url and related_count < 3 %}
+              <a href="{{ post.url | relative_url }}" style="display: block; padding: 14px 16px; border-radius: 8px; background: #121821; border: 1px solid #1e2733; color: #fff; text-decoration: none;" data-track-cta="related_article_fallback" data-track-location="article_footer">
+                {{ post.title }}
+              </a>
+              {% assign related_count = related_count | plus: 1 %}
+            {% endif %}
+          {% endfor %}
+        {% endif %}
+      </div>
+    </section>
+
+    <section style="margin: 28px 0 0 0; padding: 22px; border-radius: 10px; background: #121821; border: 1px solid #1e2733; text-align: center;">
+      <h2 style="margin: 0 0 10px 0; font-size: 24px;">Want more practical Flutter fixes?</h2>
+      <p style="margin: 0 0 16px 0; color: #b8c0cc;">Subscribe by email and get concise, real-world Flutter tips.</p>
+      <a href="mailto:flutpulse@proton.me?subject=FlutPulse%20Newsletter%20Subscription" class="btn btn-primary" data-track-cta="newsletter_signup" data-track-location="article_footer">Get Weekly Flutter Tips</a>
+    </section>
+    {% endif %}
 
   </div>
 
@@ -274,38 +398,31 @@
 {% if page.layout == "default" and page.title != "Home" and page.no_ads != true %}
 <div style="text-align: center; margin: 45px auto; max-width: 800px;">
   <span style="color: #444; font-size: 12px; display: block; margin-bottom: 8px;">Advertisement</span>
-  <div style="width: 300px; height: 250px; margin: 0 auto; position: relative; background: #121821; border-radius: 8px; border: 1px dashed #263345; display: flex; flex-direction: column; align-items: center; justify-content: center; box-sizing: border-box; padding: 20px; overflow: hidden;">
-    
-    <div style="font-size: 24px; margin-bottom: 10px;">⚡</div>
-    <div style="color: #6cff6c; font-family: monospace; font-size: 14px; font-weight: bold; letter-spacing: 1px;">FLUTPULSE ADSENSE</div>
-    <div style="color: #888; font-size: 12px; margin-top: 5px; line-height: 1.4;">Standard 300x250 Ad Block<br>Ready for Production</div>
-    <div style="margin-top: 15px; background: linear-gradient(90deg, #6cff6c, #ffd84d); color: #000; font-size: 11px; font-weight: bold; padding: 6px 16px; border-radius: 4px; text-transform: uppercase;">Learn More</div>
-
+  <div style="width: 300px; min-height: 250px; margin: 0 auto; position: relative; background: #121821; border-radius: 8px; border: 1px dashed #263345; box-sizing: border-box; overflow: hidden;">
     <ins class="adsbygoogle"
-         style="display: block; width: 300px; height: 250px; position: absolute; top: 0; left: 0; z-index: 10;"
+         style="display: block; width: 300px; min-height: 250px;"
          data-ad-client="ca-pub-XXXXXXXXXXXXXXXX"
          data-ad-slot="END_AD_SLOT"></ins>
+    <script>(window.adsbygoogle = window.adsbygoogle || []).push({});</script>
   </div>
 </div>
 {% endif %}
 
-<script>
-     (window.adsbygoogle = window.adsbygoogle || []).push({});
-</script>
-
 <footer>
   <p>© 2026 FlutPulse. All rights reserved.</p>
   <p>
-    <a href="https://www.facebook.com/flutpulse">Facebook</a> |
-    <a href="mailto:flutpulse@proton.me">Contact</a>
+    <a href="https://www.facebook.com/flutpulse" data-track-cta="facebook_open" data-track-location="footer">Facebook</a> |
+    <a href="{{ site.baseurl }}/contact/" data-track-cta="contact_page" data-track-location="footer">Contact</a> |
+    <a href="mailto:flutpulse@proton.me" data-track-cta="contact_email" data-track-location="footer">Email</a> |
+    <a href="{{ site.baseurl }}/privacy_policy/" data-track-cta="privacy_policy" data-track-location="footer">Privacy Policy</a> |
+    <a href="{{ site.baseurl }}/terms_and_conditions/" data-track-cta="terms_and_conditions" data-track-location="footer">Terms &amp; Conditions</a>
   </p>
 </footer>
 <script src="/assets/js/analytics.js"></script>
 
-{% if page.collection == "posts" %}
+{% if page.date %}
 <script>
     window.articleTitle = "{{ page.title | escape }}";
-    FlutPulseAnalytics.articleView(window.articleTitle);
 </script>
 {% endif %}
 </body>

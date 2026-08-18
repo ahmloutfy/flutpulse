@@ -4,7 +4,8 @@ title: "Conquering the Lifecycle: Why setState Belongs Outside Your Building Blo
 date: 2026-06-14
 excerpt: "Flutter's declarative nature is powerful, but mixing UI with business logic creates a brittle app. Learn why inline state management degrades performance and how to decouple it properly..."
 image: "/images/articles/conquering-the-lifecycle.jpg"
-categories: [Flutter, Architecture, State Management]
+categories: [architecture]
+tags: [state-management]
 ---
 
 <h1>{{ page.title }}</h1>

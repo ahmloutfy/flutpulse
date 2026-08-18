@@ -1,0 +1,22 @@
+name: Scheduled Publish
+
+on:
+  schedule:
+    - cron: '0 0 * * *'  # يعمل كل يوم عند منتصف الليل UTC
+  workflow_dispatch:      # تشغيل يدوي عند الحاجة
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      pages: write
+      id-token: write
+
+    steps:
+      - name: Trigger GitHub Pages rebuild
+        run: |
+          curl -s -X POST \
+            -H "Authorization: token ${{ secrets.GITHUB_TOKEN }}" \
+            -H "Accept: application/vnd.github.v3+json" \
+            https://api.github.com/repos/${{ github.repository }}/pages/builds
