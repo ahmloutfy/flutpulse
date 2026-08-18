@@ -29,6 +29,8 @@ no_ads: true
           method="POST"
           style="display: grid; gap: 16px;">
       <input type="hidden" name="access_key" {% if form_ready %}value="{{ web3forms_key }}"{% else %}value=""{% endif %}>
+      <input type="hidden" name="subject" value="New Contact Message - FlutPulse">
+      <input type="hidden" name="from_name" value="FlutPulse Contact Form">
 
       <label for="name" style="font-weight: 600; color: #d6dee9;">Name</label>
       <input id="name"
