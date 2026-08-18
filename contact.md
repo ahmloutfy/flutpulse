@@ -6,9 +6,9 @@ no_ads: true
 ---
 
 <div class="about-container" style="max-width: 800px; margin: 0 auto; padding: 40px 20px; font-family: 'Poppins', sans-serif; color: #ffffff;">
-  {% assign form_action = site.formspree_endpoint | default: "" %}
+  {% assign web3forms_key = site.web3forms_access_key | default: "" %}
   {% assign form_ready = false %}
-  {% if form_action != "" and form_action contains "https://formspree.io/f/" %}
+  {% if web3forms_key != "" %}
     {% assign form_ready = true %}
   {% endif %}
   <div style="text-align: center; margin-bottom: 30px;">
@@ -25,10 +25,12 @@ no_ads: true
 
   <div style="background: #121821; border: 1px solid #263345; border-radius: 12px; padding: 24px;">
     <form id="contact-form"
-          {% if form_ready %}action="{{ form_action }}"{% endif %}
+          action="https://api.web3forms.com/submit"
           method="POST"
           style="display: grid; gap: 16px;">
-      <input type="hidden" name="_subject" value="New Contact Message - FlutPulse">
+      <input type="hidden" name="access_key" {% if form_ready %}value="{{ web3forms_key }}"{% else %}value=""{% endif %}>
+      <input type="hidden" name="subject" value="New Contact Message - FlutPulse">
+      <input type="hidden" name="from_name" value="FlutPulse Contact Form">
 
       <label for="name" style="font-weight: 600; color: #d6dee9;">Name</label>
       <input id="name"
@@ -82,30 +84,21 @@ no_ads: true
       event.preventDefault();
       const formData = new FormData(form);
       try {
-        const response = await fetch(form.action, {
+        const response = await fetch('https://api.web3forms.com/submit', {
           method: 'POST',
           body: formData,
           headers: { 'Accept': 'application/json' }
         });
-        if (response.ok) {
+        const data = await response.json();
+        if (response.ok && data.success) {
           window.location.href = "{{ '/contact/thanks/' | relative_url }}";
           return;
         }
-        let errorMessage = 'Message could not be sent right now. Please try again later or email flutpulse@proton.me.';
-        try {
-          const data = await response.json();
-          if (data && data.errors && data.errors.length > 0 && data.errors[0].message) {
-            errorMessage = data.errors[0].message;
-          }
-        } catch (parseError) {
-          console.warn(parseError);
-        }
+        const errorMessage = (data && data.message) || 'Message could not be sent right now. Please try again later or email flutpulse@proton.me.';
         alert(errorMessage);
-        return;
       } catch (error) {
         console.error(error);
         alert('Message could not be sent right now. Please try again later or email flutpulse@proton.me.');
-        return;
       }
     });
   })();
