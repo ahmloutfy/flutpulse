@@ -220,18 +220,40 @@
     }
 
     /* Central Rouge syntax theme for every current and future code block */
-    .article-main-content pre,
-    .article-main-content .highlight {
+    .article-main-content div.highlighter-rouge {
       background: #0a0f16;
       border: 1px solid #202c3a;
       border-radius: 10px;
+      margin: 24px 0;
+      overflow: hidden;
+      box-shadow: inset 3px 0 0 #6cff6c, 0 8px 24px rgba(0, 0, 0, 0.18);
+    }
+
+    .article-main-content div.highlighter-rouge::before {
+      content: attr(data-language);
+      display: block;
+      padding: 8px 20px;
+      color: #8b98a9;
+      background: #111a25;
+      border-bottom: 1px solid #202c3a;
+      font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', monospace;
+      font-size: 0.72em;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      line-height: 1.4;
+      text-transform: uppercase;
+    }
+
+    .article-main-content div.highlighter-rouge > .highlight {
+      background: transparent;
+      border: 0;
+      border-radius: 0;
     }
 
     .article-main-content pre {
-      margin: 24px 0;
-      padding: 20px;
+      margin: 0;
+      padding: 16px 20px;
       overflow-x: auto;
-      box-shadow: inset 3px 0 0 #6cff6c, 0 8px 24px rgba(0, 0, 0, 0.18);
     }
 
     .article-main-content pre code,
@@ -517,6 +539,21 @@
   </p>
 </footer>
 <script src="/assets/js/analytics.js"></script>
+
+<script>
+  // Add a language label to every Rouge block without changing article Markdown.
+  document.querySelectorAll('.article-main-content div.highlighter-rouge').forEach(function (block) {
+    var languageClass = Array.from(block.classList).find(function (className) {
+      return className.indexOf('language-') === 0;
+    });
+
+    if (languageClass) {
+      block.dataset.language = languageClass
+        .replace('language-', '')
+        .replace(/[-_]/g, ' ');
+    }
+  });
+</script>
 
 {% if page.date %}
 <script>
