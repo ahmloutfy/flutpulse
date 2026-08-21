@@ -219,16 +219,114 @@
       text-align: left;
     }
 
-    pre {
-      background: #080c11;
-      padding: 20px;
+    /* Central Rouge syntax theme for every current and future code block */
+    .article-main-content pre,
+    .article-main-content .highlight {
+      background: #0a0f16;
+      border: 1px solid #202c3a;
       border-radius: 10px;
-      overflow-x: auto;
-      border: 1px solid #1e2733;
     }
-    code {
-      color: #ffd84d;
-      font-family: 'Consolas', monospace;
+
+    .article-main-content pre {
+      margin: 24px 0;
+      padding: 20px;
+      overflow-x: auto;
+      box-shadow: inset 3px 0 0 #6cff6c, 0 8px 24px rgba(0, 0, 0, 0.18);
+    }
+
+    .article-main-content pre code,
+    .article-main-content .highlight code {
+      display: block;
+      padding: 0;
+      color: #d6deeb;
+      background: transparent;
+      border: 0;
+      font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', monospace;
+      font-size: 0.88em;
+      line-height: 1.7;
+      white-space: pre;
+    }
+
+    /* Rouge token colors: readable, familiar editor-style palette */
+    .article-main-content .highlight .c,
+    .article-main-content .highlight .ch,
+    .article-main-content .highlight .cm,
+    .article-main-content .highlight .cp,
+    .article-main-content .highlight .cpf,
+    .article-main-content .highlight .c1,
+    .article-main-content .highlight .cs {
+      color: #718096;
+      font-style: italic;
+    }
+    .article-main-content .highlight .k,
+    .article-main-content .highlight .kc,
+    .article-main-content .highlight .kd,
+    .article-main-content .highlight .kn,
+    .article-main-content .highlight .kp,
+    .article-main-content .highlight .kr,
+    .article-main-content .highlight .kt {
+      color: #c792ea;
+    }
+    .article-main-content .highlight .n,
+    .article-main-content .highlight .na,
+    .article-main-content .highlight .nb,
+    .article-main-content .highlight .nd,
+    .article-main-content .highlight .ni,
+    .article-main-content .highlight .nn,
+    .article-main-content .highlight .nt,
+    .article-main-content .highlight .nv {
+      color: #82aaff;
+    }
+    .article-main-content .highlight .nc,
+    .article-main-content .highlight .ne,
+    .article-main-content .highlight .nf,
+    .article-main-content .highlight .fm {
+      color: #82d2ce;
+    }
+    .article-main-content .highlight .s,
+    .article-main-content .highlight .sa,
+    .article-main-content .highlight .sb,
+    .article-main-content .highlight .sc,
+    .article-main-content .highlight .sd,
+    .article-main-content .highlight .s1,
+    .article-main-content .highlight .s2,
+    .article-main-content .highlight .sh,
+    .article-main-content .highlight .si,
+    .article-main-content .highlight .sx {
+      color: #c3e88d;
+    }
+    .article-main-content .highlight .m,
+    .article-main-content .highlight .mb,
+    .article-main-content .highlight .mf,
+    .article-main-content .highlight .mh,
+    .article-main-content .highlight .mi,
+    .article-main-content .highlight .mo {
+      color: #f78c6c;
+    }
+    .article-main-content .highlight .o,
+    .article-main-content .highlight .ow,
+    .article-main-content .highlight .p {
+      color: #89ddff;
+    }
+    .article-main-content .highlight .err {
+      color: #ff5370;
+      background: transparent;
+    }
+
+    /* Inline code stays compact and distinct from full code blocks */
+    .article-main-content > p code,
+    .article-main-content li code,
+    .article-main-content h1 code,
+    .article-main-content h2 code,
+    .article-main-content h3 code,
+    .article-main-content h4 code {
+      padding: 0.15em 0.35em;
+      border: 1px solid #29384a;
+      border-radius: 4px;
+      color: #ffd166;
+      background: #141c27;
+      font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', monospace;
+      font-size: 0.88em;
     }
 
     /* Footer */
