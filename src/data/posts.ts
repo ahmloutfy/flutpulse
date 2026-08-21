@@ -16,10 +16,12 @@ export interface Category {
 
 const rawPosts: BlogPost[] = process.env.BLOG_POSTS || []
 
-export const posts: BlogPost[] = rawPosts.map(p => ({
-  ...p,
-  image: p.image || ''
-}))
+const today = new Date()
+today.setHours(0, 0, 0, 0)
+
+export const posts: BlogPost[] = rawPosts
+  .filter(p => new Date(p.date) <= today)
+  .map(p => ({ ...p, image: p.image || '' }))
 
 export const categories: Category[] = (() => {
   const map = new Map<string, BlogPost[]>()

@@ -8,6 +8,7 @@ export default function Home() {
           <h1>Solve. Learn. <span>Build.</span></h1>
           <p>Fix Flutter issues with clear, practical solutions.</p>
           <a href="#/#latest-articles" className="btn btn-primary" data-track-cta="browse_articles" data-track-location="home_hero">Browse Articles</a>
+          <span style={{ display: 'inline-block', width: 12 }} />
           <a href="#/#categories-overview" className="btn btn-secondary" data-track-cta="explore_categories" data-track-location="home_hero">Explore Categories</a>
         </div>
         <div className="hero-logo">
